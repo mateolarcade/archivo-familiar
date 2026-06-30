@@ -1,1 +1,1 @@
-window.APP_CONFIG = { familyPassword: "familia2026", maxLoginAttempts: 3, rememberLoginInSession: true };
+window.APP_CONFIG = { familyPassword: "familia.larcade", maxLoginAttempts: 3, rememberLoginInSession: true };
