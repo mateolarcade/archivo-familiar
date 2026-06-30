@@ -14,7 +14,7 @@
   const config = window.APP_CONFIG || {};
   const movies = Array.isArray(window.MOVIES) ? window.MOVIES : [];
   const maxAttempts = Number(config.maxLoginAttempts) || 3;
-  const password = String(config.familyPassword || "");
+  const password = String(config.familyPassword || "familia2026");
   let attempts = 0;
   function showOnly(screen) { [introScreen, loginScreen, catalogScreen].forEach((item) => { if (item) item.classList.toggle("is-hidden", item !== screen); }); }
   function isLoggedIn() { return config.rememberLoginInSession && sessionStorage.getItem("archivoFamiliarAuth") === "ok"; }
