@@ -1,0 +1,80 @@
+window.MOVIES = [
+  {
+    id: "mateo-marruecos",
+    title: "Mateo Marruecos",
+    description: "Registro de viaje y momentos destacados.",
+    category: "Viaje",
+    duration: "N/A",
+    year: "2025",
+    rating: "ATP",
+    location: "N/A",
+    people: ["Mateo"],
+    poster: "assets/posters/mateo-marruecos.svg",
+    drivePreviewUrl: "https://drive.google.com/file/d/17rRtr4khOv-_RLJmlANIG4pDyd-OjpLx/preview"
+  },
+  {
+    id: "papa-uritorco",
+    title: "Papá Uritorco",
+    description: "Experiencia en el Uritorco y recorrido familiar.",
+    category: "Aventura",
+    duration: "N/A",
+    year: "2025",
+    rating: "ATP",
+    location: "Cerro Uritorco",
+    people: ["Familia"],
+    poster: "assets/posters/papa-uritorco.svg",
+    drivePreviewUrl: "https://drive.google.com/file/d/16D65IfwbA2O0C2hxco_C2HswnyT10Ucj/preview"
+  },
+  {
+    id: "papa-uritorco-llega-cima",
+    title: "Papá Uritorco: Llega a la cima",
+    description: "Ascenso completo hasta la cima del Uritorco.",
+    category: "Aventura",
+    duration: "N/A",
+    year: "2025",
+    rating: "ATP",
+    location: "Cerro Uritorco",
+    people: ["Familia"],
+    poster: "assets/posters/papa-uritorco-llega-cima.svg",
+    drivePreviewUrl: "https://drive.google.com/file/d/1pmJS3GndBYQF-y4jOHYVFmC8mYdZ-Gmw/preview"
+  },
+  {
+    id: "gol-mateo-mitad-cancha",
+    title: "Gol de Mateo desde mitad de cancha",
+    description: "Gol desde mitad de cancha en jugada destacada.",
+    category: "Fútbol",
+    duration: "N/A",
+    year: "2025",
+    rating: "ATP",
+    location: "Cancha de fútbol",
+    people: ["Mateo"],
+    poster: "assets/posters/gol-mateo-mitad-cancha.svg",
+    drivePreviewUrl: "https://drive.google.com/file/d/1h6MMG5Ywe9U1_XUkwi_qchEoyntnL20a/preview"
+  },
+  {
+    id: "gol-mateo-tiro-libre",
+    title: "Gol de Mateo de tiro libre",
+    description: "Falta previa y ejecución de tiro libre con gol.",
+    category: "Fútbol",
+    duration: "N/A",
+    year: "2025",
+    rating: "ATP",
+    location: "Cancha de fútbol",
+    people: ["Mateo"],
+    poster: "assets/posters/gol-mateo-tiro-libre.svg",
+    drivePreviewUrl: "https://drive.google.com/file/d/1h6MMG5Ywe9U1_XUkwi_qchEoyntnL20a/preview"
+  },
+  {
+    id: "gol-mateo-rabona",
+    title: "Gol de Mateo de rabona",
+    description: "Definición de rabona en jugada destacada.",
+    category: "Fútbol",
+    duration: "N/A",
+    year: "2025",
+    rating: "ATP",
+    location: "Cancha de fútbol",
+    people: ["Mateo"],
+    poster: "assets/posters/gol-mateo-rabona.svg",
+    drivePreviewUrl: "https://drive.google.com/file/d/14nLcb6uFRcJ7uMigSQUihY02Uqsz-lo7/preview"
+  }
+];
