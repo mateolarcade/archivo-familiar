@@ -9,7 +9,7 @@ window.MOVIES = [
     rating: "ATP",
     location: "N/A",
     people: ["Mateo"],
-    poster: "assets/posters/mateo-marruecos.svg",
+    poster: "assets/posters/mateo-marruecos.jpg",
     drivePreviewUrl: "https://drive.google.com/file/d/17rRtr4khOv-_RLJmlANIG4pDyd-OjpLx/preview"
   },
   {
@@ -22,7 +22,7 @@ window.MOVIES = [
     rating: "ATP",
     location: "Cerro Uritorco",
     people: ["Familia"],
-    poster: "assets/posters/papa-uritorco.svg",
+    poster: "assets/posters/papa-uritorco.jpg",
     drivePreviewUrl: "https://drive.google.com/file/d/16D65IfwbA2O0C2hxco_C2HswnyT10Ucj/preview"
   },
   {
@@ -35,7 +35,7 @@ window.MOVIES = [
     rating: "ATP",
     location: "Cerro Uritorco",
     people: ["Familia"],
-    poster: "assets/posters/papa-uritorco-llega-cima.svg",
+    poster: "assets/posters/papa-uritorco-llega-cima.jpg",
     drivePreviewUrl: "https://drive.google.com/file/d/1pmJS3GndBYQF-y4jOHYVFmC8mYdZ-Gmw/preview"
   },
   {
@@ -48,7 +48,7 @@ window.MOVIES = [
     rating: "ATP",
     location: "Cancha de fútbol",
     people: ["Mateo"],
-    poster: "assets/posters/gol-mateo-mitad-cancha.svg",
+    poster: "assets/posters/gol-mateo-mitad-cancha.jpg",
     drivePreviewUrl: "https://drive.google.com/file/d/1h6MMG5Ywe9U1_XUkwi_qchEoyntnL20a/preview"
   },
   {
@@ -61,7 +61,7 @@ window.MOVIES = [
     rating: "ATP",
     location: "Cancha de fútbol",
     people: ["Mateo"],
-    poster: "assets/posters/gol-mateo-tiro-libre.svg",
+    poster: "assets/posters/gol-mateo-tiro-libre.jpg",
     drivePreviewUrl: "https://drive.google.com/file/d/1h6MMG5Ywe9U1_XUkwi_qchEoyntnL20a/preview"
   },
   {
@@ -74,7 +74,7 @@ window.MOVIES = [
     rating: "ATP",
     location: "Cancha de fútbol",
     people: ["Mateo"],
-    poster: "assets/posters/gol-mateo-rabona.svg",
+    poster: "assets/posters/gol-mateo-rabona.jpg",
     drivePreviewUrl: "https://drive.google.com/file/d/14nLcb6uFRcJ7uMigSQUihY02Uqsz-lo7/preview"
   }
 ];
