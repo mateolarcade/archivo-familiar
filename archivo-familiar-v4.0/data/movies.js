@@ -62,7 +62,7 @@ window.MOVIES = [
     location: "Cancha de fútbol",
     people: ["Mateo"],
     poster: "assets/posters/gol-mateo-tiro-libre.jpg",
-    drivePreviewUrl: "https://drive.google.com/file/d/1h6MMG5Ywe9U1_XUkwi_qchEoyntnL20a/preview"
+    drivePreviewUrl: "https://drive.google.com/file/d/1_21vCz-bn0DWAHLsIiG84Iw-vAbAelIj/preview"
   },
   {
     id: "gol-mateo-rabona",
