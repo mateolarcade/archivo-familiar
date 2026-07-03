@@ -15,9 +15,8 @@
     const category = item.category || item.type || "Video familiar";
     const people = Array.isArray(item.people) ? item.people.join(", ") : item.people || "No especificado";
     document.title = item.title + " | Archivo Familiar";
-    playerContent.innerHTML = "<section class=\"detail-layout\"><aside class=\"detail-poster\"><img src=\"" + escapeAttribute(item.poster) + "\" alt=\"Portada de " + escapeAttribute(item.title) + "\"></aside><article class=\"detail-panel\"><p class=\"eyebrow\">" + escapeHtml(category) + "</p><h1>" + escapeHtml(item.title) + "</h1><div class=\"detail-meta-grid\"><div><span>A&ntilde;o</span><strong>" + escapeHtml(item.year) + "</strong></div><div><span>Duracion</span><strong>" + escapeHtml(item.duration) + "</strong></div><div><span>Categoria</span><strong>" + escapeHtml(category) + "</strong></div><div><span>Lugar</span><strong>" + escapeHtml(item.location || "No especificado") + "</strong></div></div><div class=\"people-block\"><span>Personas que aparecen</span><p>" + escapeHtml(people) + "</p></div><p class=\"detail-description\">" + escapeHtml(item.description) + "</p><button id=\"play-button\" class=\"primary-link play-button\" type=\"button\">Intentar reproducir</button></article></section><section class=\"watch-layout\" aria-label=\"Reproductor de video\"><div id=\"video-frame\" class=\"video-frame video-frame-placeholder\"><div class=\"player-placeholder\"><p class=\"eyebrow\">Google Drive</p><h2>El reproductor se cargara cuando presiones Intentar reproducir.</h2></div></div><div id=\"mobile-player-toolbar\" class=\"mobile-player-toolbar is-idle\"><button id=\"fullscreen-button\" type=\"button\">Pantalla completa</button></div>" + renderAccessCard() + "</section>";
+    playerContent.innerHTML = "<section class=\"detail-layout\"><aside class=\"detail-poster\"><img src=\"" + escapeAttribute(item.poster) + "\" alt=\"Portada de " + escapeAttribute(item.title) + "\"></aside><article class=\"detail-panel\"><p class=\"eyebrow\">" + escapeHtml(category) + "</p><h1>" + escapeHtml(item.title) + "</h1><div class=\"detail-meta-grid\"><div><span>A&ntilde;o</span><strong>" + escapeHtml(item.year) + "</strong></div><div><span>Duracion</span><strong>" + escapeHtml(item.duration) + "</strong></div><div><span>Categoria</span><strong>" + escapeHtml(category) + "</strong></div><div><span>Lugar</span><strong>" + escapeHtml(item.location || "No especificado") + "</strong></div></div><div class=\"people-block\"><span>Personas que aparecen</span><p>" + escapeHtml(people) + "</p></div><p class=\"detail-description\">" + escapeHtml(item.description) + "</p><button id=\"play-button\" class=\"primary-link play-button\" type=\"button\">Intentar reproducir</button></article></section><section class=\"watch-layout\" aria-label=\"Reproductor de video\"><div id=\"video-frame\" class=\"video-frame video-frame-placeholder\"><div class=\"player-placeholder\"><p class=\"eyebrow\">Google Drive</p><h2>El reproductor se cargara cuando presiones Intentar reproducir.</h2></div></div>" + renderAccessCard() + "</section>";
     document.getElementById("play-button").addEventListener("click", () => loadDrivePlayer(item));
-    setupMobileToolbar();
   }
 
   function loadDrivePlayer(item) {
@@ -25,35 +24,6 @@
     const src = getDrivePreviewUrl(item);
     frame.classList.remove("video-frame-placeholder");
     frame.innerHTML = "<iframe src=\"" + escapeAttribute(src) + "\" title=\"" + escapeAttribute(item.title) + "\" allow=\"autoplay; encrypted-media; picture-in-picture; fullscreen\" allowfullscreen></iframe>";
-  }
-
-  function setupMobileToolbar() {
-    const toolbar = document.getElementById("mobile-player-toolbar");
-    const fullscreenButton = document.getElementById("fullscreen-button");
-    const frame = document.getElementById("video-frame");
-    let hideTimer;
-
-    function showToolbar() {
-      if (!toolbar) return;
-      toolbar.classList.remove("is-idle");
-      window.clearTimeout(hideTimer);
-      hideTimer = window.setTimeout(() => toolbar.classList.add("is-idle"), 2600);
-    }
-
-    async function enterFullscreen() {
-      if (!frame || !frame.requestFullscreen) return;
-      try { await frame.requestFullscreen(); }
-      catch (error) { return; }
-      if (screen.orientation && screen.orientation.lock) {
-        try { await screen.orientation.lock("landscape"); }
-        catch (error) {}
-      }
-    }
-
-    if (fullscreenButton) fullscreenButton.addEventListener("click", enterFullscreen);
-    if (toolbar) ["touchstart", "mousemove", "click"].forEach((eventName) => toolbar.addEventListener(eventName, showToolbar));
-    if (frame) ["touchstart", "mousemove", "click"].forEach((eventName) => frame.addEventListener(eventName, showToolbar));
-    showToolbar();
   }
 
   function renderAccessCard() {
