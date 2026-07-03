@@ -1,15 +1,15 @@
 window.MOVIES = [
   {
-    id: "mateo-marruecos",
-    title: "Mateo Marruecos",
-    description: "Registro de viaje y momentos destacados.",
-    category: "Viaje",
-    duration: "N/A",
-    year: "2025",
+    id: "mateo-bautismo",
+    title: "Bautismo Mateo",
+    description: "Año 1995. Parroquia San Francisco Solano, Bella Vista. Después, en lo de Mamama.",
+    category: "Evento Familiar",
+    duration: "23 minutos",
+    year: "1995",
     rating: "ATP",
-    location: "N/A",
-    people: ["Mateo"],
-    poster: "assets/posters/mateo-marruecos.jpg",
+    location: "Bella Vista, Buenos Aires",
+    people: ["Mateo","Fátima","Rafael","Isabel"],
+    poster: "assets/posters/mateo-bautismo.jpg",
     drivePreviewUrl: "https://drive.google.com/file/d/17rRtr4khOv-_RLJmlANIG4pDyd-OjpLx/preview"
   },
   {
