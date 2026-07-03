@@ -1,6 +1,7 @@
 (function () {
   const FAMILY_PASSWORD = "familia2026";
   const MAX_PASSWORD_ATTEMPTS = 3;
+  const ACCESS_STORAGE_KEY = "archivoFamiliarAccessGranted";
   const introScreen = document.getElementById("intro-screen");
   const passwordScreen = document.getElementById("password-screen");
   const passwordForm = document.getElementById("password-form");
@@ -17,6 +18,14 @@
   const featuredButton = document.getElementById("featured-button");
   const movies = Array.isArray(window.MOVIES) ? window.MOVIES : [];
   let remainingPasswordAttempts = MAX_PASSWORD_ATTEMPTS;
+  function hasFamilyAccess() {
+    try { return window.sessionStorage.getItem(ACCESS_STORAGE_KEY) === "true"; }
+    catch (error) { return false; }
+  }
+  function grantFamilyAccess() {
+    try { window.sessionStorage.setItem(ACCESS_STORAGE_KEY, "true"); }
+    catch (error) {}
+  }
   function getIntroDuration() { return window.APP_CONFIG && Number.isFinite(window.APP_CONFIG.introDurationMs) ? window.APP_CONFIG.introDurationMs : 3000; }
   function showPasswordScreen() {
     introScreen.classList.add("is-hidden");
@@ -60,6 +69,7 @@
     event.preventDefault();
     if (remainingPasswordAttempts <= 0) return;
     if (passwordInput.value === FAMILY_PASSWORD) {
+      grantFamilyAccess();
       playAccessSound();
       showCatalog();
       return;
@@ -73,7 +83,7 @@
     passwordMessage.textContent = "La contraseña ingresada es incorrecta. Intentos restantes: " + remainingPasswordAttempts;
     passwordInput.focus();
   }
-  function startExperience() { window.setTimeout(showPasswordScreen, getIntroDuration()); }
+  function startExperience() { if (hasFamilyAccess()) { showCatalog(); return; } window.setTimeout(showPasswordScreen, getIntroDuration()); }
   function getMovieSearchText(movie) {
     return [movie.title, movie.description, movie.category, movie.type, movie.duration, movie.year, movie.location, Array.isArray(movie.people) ? movie.people.join(" ") : movie.people].join(" ").toLowerCase();
   }
