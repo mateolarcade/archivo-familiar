@@ -4,7 +4,7 @@
   const params = new URLSearchParams(window.location.search);
   const movie = movies.find((item) => item.id === params.get("id"));
   function getDrivePreviewUrl(item) { return item.drivePreviewUrl || item.videoUrl || ""; }
-  function renderNotFound() { document.title = "Contenido no encontrado | Archivo Familiar"; playerContent.innerHTML = "<section class=\"not-found\"><p class=\"eyebrow\">Contenido no disponible</p><h1>No encontramos ese video</h1><p>El enlace puede estar incompleto o el ID no existe en el catalogo.</p><a class=\"primary-link\" href=\"index.html?view=catalog\">Volver al catalogo</a></section>"; }
+  function renderNotFound() { document.title = "Contenido no encontrado | Archivo Familiar"; playerContent.innerHTML = "<section class=\"not-found\"><p class=\"eyebrow\">Contenido no disponible</p><h1>No encontramos ese video</h1><p>El enlace puede estar incompleto o el ID no existe en el catalogo.</p><a class=\"primary-link\" href=\"index.html\">Volver al catalogo</a></section>"; }
   function renderDetail(item) {
     const category = item.category || item.type || "Video familiar";
     const people = Array.isArray(item.people) ? item.people.join(", ") : item.people || "No especificado";

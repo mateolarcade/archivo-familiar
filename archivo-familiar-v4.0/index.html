@@ -14,9 +14,25 @@
   <main id="intro-screen" class="intro-screen" aria-label="Presentacion Archivo Familiar">
     <div class="intro-logo" aria-hidden="true"><span>Archivo</span><strong>Familiar</strong></div>
   </main>
+  <section id="password-screen" class="password-screen is-hidden" aria-labelledby="password-title">
+    <div class="password-panel">
+      <a class="brand password-brand" href="index.html" aria-label="Archivo Familiar"><span>Archivo</span><strong>Familiar</strong></a>
+      <p class="eyebrow">Acceso familiar</p>
+      <h1 id="password-title">Ingresa la contraseña familiar</h1>
+      <form id="password-form" class="password-form">
+        <label for="family-password">Contraseña</label>
+        <div class="password-row">
+          <input id="family-password" type="password" autocomplete="current-password" aria-describedby="password-message" required>
+          <button id="password-submit" type="submit">Entrar</button>
+        </div>
+      </form>
+      <p id="password-message" class="password-message" aria-live="polite"></p>
+      <button id="password-retry" class="secondary-button is-hidden" type="button">Ya tengo la contraseña</button>
+    </div>
+  </section>
   <section id="catalog-screen" class="catalog-screen is-hidden">
     <header class="site-header">
-      <a class="brand" href="index.html?view=catalog" aria-label="Ir al catalogo"><span>Archivo</span><strong>Familiar</strong></a>
+      <a class="brand" href="index.html" aria-label="Ir al catalogo"><span>Archivo</span><strong>Familiar</strong></a>
       <form id="search-form" class="search-form" role="search">
         <input id="search-input" type="search" placeholder="Buscar por titulo, lugar, personas o categoria" aria-label="Buscar contenido">
         <button type="submit">Buscar</button>
