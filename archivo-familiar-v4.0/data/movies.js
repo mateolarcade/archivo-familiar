@@ -9,8 +9,8 @@ window.MOVIES = [
     rating: "ATP",
     location: "Bella Vista, Buenos Aires",
     people: ["Mateo","Fátima","Rafael","Isabel"],
-    poster: "assets/posters/mateo-bautismo.jpg",
-    drivePreviewUrl: "https://drive.google.com/file/d/17rRtr4khOv-_RLJmlANIG4pDyd-OjpLx/preview"
+    poster: "assets/posters/bautismo-mateo.jpg",
+    drivePreviewUrl: "https://drive.google.com/file/d/1XGA0NOGHOuS3BN83z5WPCdUSAYyJrxXQ/preview"
   },
   {
     id: "papa-uritorco",
