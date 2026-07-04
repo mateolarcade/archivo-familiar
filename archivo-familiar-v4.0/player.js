@@ -5,6 +5,7 @@
   const movie = movies.find((item) => item.id === params.get("id"));
 
   function getDrivePreviewUrl(item) { return item.drivePreviewUrl || item.videoUrl || ""; }
+  function getDriveViewUrl(item) { return getDrivePreviewUrl(item).replace(/\/preview(\?.*)?$/, "/view"); }
 
   function renderNotFound() {
     document.title = "Contenido no encontrado | Archivo Familiar";
@@ -15,8 +16,8 @@
     const category = item.category || item.type || "Video familiar";
     const people = Array.isArray(item.people) ? item.people.join(", ") : item.people || "No especificado";
     document.title = item.title + " | Archivo Familiar";
-    playerContent.innerHTML = "<section class=\"detail-layout\"><aside class=\"detail-poster\"><img src=\"" + escapeAttribute(item.poster) + "\" alt=\"Portada de " + escapeAttribute(item.title) + "\"></aside><article class=\"detail-panel\"><p class=\"eyebrow\">" + escapeHtml(category) + "</p><h1>" + escapeHtml(item.title) + "</h1><div class=\"detail-meta-grid\"><div><span>A&ntilde;o</span><strong>" + escapeHtml(item.year) + "</strong></div><div><span>Duracion</span><strong>" + escapeHtml(item.duration) + "</strong></div><div><span>Categoria</span><strong>" + escapeHtml(category) + "</strong></div><div><span>Lugar</span><strong>" + escapeHtml(item.location || "No especificado") + "</strong></div></div><div class=\"people-block\"><span>Personas que aparecen</span><p>" + escapeHtml(people) + "</p></div><p class=\"detail-description\">" + escapeHtml(item.description) + "</p><button id=\"play-button\" class=\"primary-link play-button is-hidden\" type=\"button\" aria-hidden=\"true\" tabindex=\"-1\">Intentar reproducir</button></article></section><section class=\"watch-layout\" aria-label=\"Reproductor de video\"><div id=\"video-frame\" class=\"video-frame\"></div>" + renderAccessCard() + "</section>";
-    document.getElementById("play-button").addEventListener("click", () => loadDrivePlayer(item));
+    playerContent.innerHTML = "<section class=\"detail-layout\"><aside class=\"detail-poster\"><img src=\"" + escapeAttribute(item.poster) + "\" alt=\"Portada de " + escapeAttribute(item.title) + "\"></aside><article class=\"detail-panel\"><p class=\"eyebrow\">" + escapeHtml(category) + "</p><h1>" + escapeHtml(item.title) + "</h1><div class=\"detail-meta-grid\"><div><span>A&ntilde;o</span><strong>" + escapeHtml(item.year) + "</strong></div><div><span>Duracion</span><strong>" + escapeHtml(item.duration) + "</strong></div><div><span>Categoria</span><strong>" + escapeHtml(category) + "</strong></div><div><span>Lugar</span><strong>" + escapeHtml(item.location || "No especificado") + "</strong></div></div><div class=\"people-block\"><span>Personas que aparecen</span><p>" + escapeHtml(people) + "</p></div><p class=\"detail-description\">" + escapeHtml(item.description) + "</p><button id=\"play-button\" class=\"primary-link play-button\" type=\"button\">Reproducir en celular</button></article></section><section class=\"watch-layout\" aria-label=\"Reproductor de video\"><div id=\"video-frame\" class=\"video-frame\"></div>" + renderAccessCard() + "</section>";
+    document.getElementById("play-button").addEventListener("click", () => window.open(getDriveViewUrl(item), "_blank", "noopener"));
     loadDrivePlayer(item);
   }
 
