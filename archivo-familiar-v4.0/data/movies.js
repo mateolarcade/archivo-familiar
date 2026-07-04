@@ -22,7 +22,7 @@ window.MOVIES = [
     rating: "ATP",
     location: "La Casona de Amenabar, CABA",
     people: ["Rafael","Isabel"],
-    poster: "assets/posters/fiesta-casamiento.jpg",
+    poster: "assets/posters/fiesta-casamiento.png",
     drivePreviewUrl: "https://drive.google.com/file/d/1HBVAqfLOmDzQyAlK48nGKyrgKFmF2avJ/preview"
   },
   {
