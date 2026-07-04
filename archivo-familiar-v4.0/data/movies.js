@@ -13,6 +13,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/1XGA0NOGHOuS3BN83z5WPCdUSAYyJrxXQ/preview"
   },
   {
+    id: "fiesta-casamiento",
+    title: "Fiesta de Casamiento - Mamá y Papá",
+    description: "5 de Diciembre, 1991. Fiesta de casamiento de mamá y papá.",
+    category: "Evento Familiar",
+    duration: "1 hora 5 minutos",
+    year: "1991",
+    rating: "ATP",
+    location: "La Casona de Amenabar, CABA",
+    people: ["Rafael","Isabel"],
+    poster: "assets/posters/fiesta-casamiento.jpg",
+    drivePreviewUrl: "https://drive.google.com/file/d/1HBVAqfLOmDzQyAlK48nGKyrgKFmF2avJ/preview"
+  },
+  {
     id: "papa-uritorco",
     title: "Papá Uritorco",
     description: "Experiencia en el Uritorco y recorrido familiar.",
