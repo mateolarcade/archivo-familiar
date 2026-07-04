@@ -7,6 +7,7 @@
   const passwordForm = document.getElementById("password-form");
   const passwordInput = document.getElementById("family-password");
   const passwordSubmit = document.getElementById("password-submit");
+  const passwordToggle = document.getElementById("password-toggle");
   const passwordMessage = document.getElementById("password-message");
   const passwordRetry = document.getElementById("password-retry");
   const catalogScreen = document.getElementById("catalog-screen");
@@ -105,6 +106,13 @@
   if (searchForm) searchForm.addEventListener("submit", handleSearch);
   if (searchInput) searchInput.addEventListener("input", handleSearch);
   if (passwordForm) passwordForm.addEventListener("submit", handlePasswordSubmit);
+  if (passwordToggle && passwordInput) passwordToggle.addEventListener("click", () => {
+    const shouldShow = passwordInput.type === "password";
+    passwordInput.type = shouldShow ? "text" : "password";
+    passwordToggle.setAttribute("aria-label", shouldShow ? "Ocultar contraseña" : "Mostrar contraseña");
+    passwordToggle.setAttribute("aria-pressed", String(shouldShow));
+    passwordInput.focus();
+  });
   if (passwordRetry) passwordRetry.addEventListener("click", () => window.location.reload());
   startExperience();
 })();

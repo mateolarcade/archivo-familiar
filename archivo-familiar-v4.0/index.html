@@ -22,7 +22,10 @@
       <form id="password-form" class="password-form">
         <label for="family-password">Contraseña</label>
         <div class="password-row">
-          <input id="family-password" type="password" autocomplete="current-password" aria-describedby="password-message" required>
+          <div class="password-field">
+            <input id="family-password" type="password" autocomplete="current-password" aria-describedby="password-message" required>
+            <button id="password-toggle" class="password-toggle" type="button" aria-label="Mostrar contraseña" aria-pressed="false">&#128065;</button>
+          </div>
           <button id="password-submit" type="submit">Entrar</button>
         </div>
       </form>
