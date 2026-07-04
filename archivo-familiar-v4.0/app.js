@@ -15,7 +15,6 @@
   const movieGrid = document.getElementById("movie-grid");
   const emptyState = document.getElementById("empty-state");
   const resultsCount = document.getElementById("results-count");
-  const featuredButton = document.getElementById("featured-button");
   const movies = Array.isArray(window.MOVIES) ? window.MOVIES : [];
   let remainingPasswordAttempts = MAX_PASSWORD_ATTEMPTS;
   function hasFamilyAccess() {
@@ -37,7 +36,6 @@
     passwordScreen.classList.add("is-hidden");
     catalogScreen.classList.remove("is-hidden");
     renderMovies(movies);
-    if (movies[0] && featuredButton) featuredButton.href = "player.html?id=" + encodeURIComponent(movies[0].id);
   }
   function playAccessSound() {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
