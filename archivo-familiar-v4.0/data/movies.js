@@ -78,6 +78,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/1vkOo5R8wMDd4cTEDYVtC-jO_rnKiwcWd/preview"
   },
   {
+    id: "peliculas-carballo-2",
+    title: "Peliculas en lo de Lucas Carballo 2",
+    description: "Años 2001 y 2002. Mateo con sus compañeros del colegio iban a lo de Lucas Carballo y filmaban películas.",
+    category: "Recuerdos",
+    duration: "29 minutos",
+    year: "2001",
+    rating: "ATP",
+    location: "Bella Vista",
+    people: ["Mateo"],
+    poster: "assets/posters/peliculas-carballo-2.png",
+    drivePreviewUrl: ""
+  },
+  {
     id: "comunion-mateo",
     title: "Comunión de Mateo",
     description: "Años 2005. Mateo recibe la comunión en la Parroquia de San Francisco Solano, Bella Vista.",
