@@ -27,7 +27,7 @@ window.MOVIES = [
   },
   {
     id: "fiesta-casamiento",
-    title: "Fiesta de Casamiento  Mamá y Papá",
+    title: "Casamiento Fiesta, Mamá y Papá",
     description: "5 de Diciembre, 1991. Fiesta de casamiento de mamá y papá.",
     category: "Evento Familiar",
     duration: "1 hora 5 minutos",
