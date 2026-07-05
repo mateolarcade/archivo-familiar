@@ -65,6 +65,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/1vkOo5R8wMDd4cTEDYVtC-jO_rnKiwcWd/preview"
   },
   {
+    id: "comunion-mateo",
+    title: "Comunión de Mateo",
+    description: "Años 2005. Mateo recibe la comunión en la Parroquia de San Francisco Solano, Bella Vista.",
+    category: "Recuerdos",
+    duration: "18 minutos",
+    year: "2005",
+    rating: "ATP",
+    location: "Bella Vista",
+    people: ["Mateo"],
+    poster: "assets/posters/comunion-mateo.png",
+    drivePreviewUrl: "https://drive.google.com/file/d/13KhGIEVsQkTu6CTXTocCJ1x2uhMj9pEX/preview"
+  },
+  {
     id: "papa-uritorco",
     title: "Papá Uritorco",
     description: "Experiencia en el Uritorco y recorrido familiar.",
