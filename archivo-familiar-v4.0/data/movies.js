@@ -13,6 +13,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/1XGA0NOGHOuS3BN83z5WPCdUSAYyJrxXQ/preview"
   },
   {
+    id: "fatima-bautismo",
+    title: "Bautismo Fátima",
+    description: "Año 1993. Parroquia San Francisco Solano, Bella Vista. Después, en la casita vieja de Entre Ríos.",
+    category: "Evento Familiar",
+    duration: "30 minutos",
+    year: "1993",
+    rating: "ATP",
+    location: "Bella Vista, Buenos Aires",
+    people: ["Fátima","Rafael","Isabel"],
+    poster: "assets/posters/bautismo-fatima.png",
+    drivePreviewUrl: "https://drive.google.com/file/d/1FZ6Ha5gztHHadNynYOaam_FkIiBMrcR3/preview"
+  },
+  {
     id: "fiesta-casamiento",
     title: "Fiesta de Casamiento  Mamá y Papá",
     description: "5 de Diciembre, 1991. Fiesta de casamiento de mamá y papá.",
