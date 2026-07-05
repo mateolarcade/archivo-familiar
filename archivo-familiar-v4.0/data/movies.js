@@ -9,7 +9,7 @@ window.MOVIES = [
     rating: "ATP",
     location: "Bella Vista, Buenos Aires",
     people: ["Mateo","Fátima","Rafael","Isabel"],
-    poster: "assets/posters/bautismo-mateo.jpg",
+    poster: "assets/posters/bautismo-mateo.png",
     drivePreviewUrl: "https://drive.google.com/file/d/1XGA0NOGHOuS3BN83z5WPCdUSAYyJrxXQ/preview"
   },
   {
