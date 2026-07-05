@@ -17,6 +17,7 @@
   const emptyState = document.getElementById("empty-state");
   const resultsCount = document.getElementById("results-count");
   const movies = Array.isArray(window.MOVIES) ? window.MOVIES : [];
+  const sortedMovies = movies.slice().sort(compareMovies);
   let remainingPasswordAttempts = MAX_PASSWORD_ATTEMPTS;
   function hasFamilyAccess() {
     try { return window.sessionStorage.getItem(ACCESS_STORAGE_KEY) === "true"; }
@@ -36,7 +37,7 @@
     introScreen.classList.add("is-hidden");
     passwordScreen.classList.add("is-hidden");
     catalogScreen.classList.remove("is-hidden");
-    renderMovies(movies);
+    renderMovies(sortedMovies);
   }
   function playAccessSound() {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -86,6 +87,13 @@
   function getMovieSearchText(movie) {
     return [movie.title, movie.description, movie.category, movie.type, movie.duration, movie.year, movie.location, Array.isArray(movie.people) ? movie.people.join(" ") : movie.people].join(" ").toLowerCase();
   }
+  function compareMovies(firstMovie, secondMovie) {
+    const firstYear = Number.parseInt(firstMovie.year, 10);
+    const secondYear = Number.parseInt(secondMovie.year, 10);
+    const yearComparison = (Number.isNaN(firstYear) ? Number.MAX_SAFE_INTEGER : firstYear) - (Number.isNaN(secondYear) ? Number.MAX_SAFE_INTEGER : secondYear);
+    if (yearComparison !== 0) return yearComparison;
+    return String(firstMovie.title || "").localeCompare(String(secondMovie.title || ""), "es", { sensitivity: "base" });
+  }
   function renderMovies(list) {
     movieGrid.innerHTML = "";
     const fragment = document.createDocumentFragment();
@@ -100,7 +108,7 @@
     emptyState.classList.toggle("is-hidden", list.length > 0);
     resultsCount.textContent = list.length === 1 ? "1 resultado" : list.length + " resultados";
   }
-  function handleSearch(event) { event.preventDefault(); const query = searchInput.value.trim().toLowerCase(); renderMovies(query ? movies.filter((movie) => getMovieSearchText(movie).includes(query)) : movies); }
+  function handleSearch(event) { event.preventDefault(); const query = searchInput.value.trim().toLowerCase(); renderMovies(query ? sortedMovies.filter((movie) => getMovieSearchText(movie).includes(query)) : sortedMovies); }
   function escapeHtml(value) { return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
   function escapeAttribute(value) { return escapeHtml(value).replaceAll("\x60", "&#096;"); }
   if (searchForm) searchForm.addEventListener("submit", handleSearch);
