@@ -78,6 +78,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/13KhGIEVsQkTu6CTXTocCJ1x2uhMj9pEX/preview"
   },
   {
+    id: "casamiento-civil-iglesia",
+    title: "Casamiento Civil e Iglesia, Mamá y Papá",
+    description: "Año 1991. Papá y Mamá se casan por civil e iglesia, Bella Vista.",
+    category: "Recuerdos",
+    duration: "1 hora 16 minutos",
+    year: "1991",
+    rating: "ATP",
+    location: "Bella Vista",
+    people: ["Rafael", "Isabel"],
+    poster: "assets/posters/casamiento-civil-iglesia.png",
+    drivePreviewUrl: "https://drive.google.com/file/d/1eZ1egtg6_MET5A62o_npBTDwffBvRmcF/preview"
+  },
+  {
     id: "papa-uritorco",
     title: "Papá Uritorco",
     description: "Experiencia en el Uritorco y recorrido familiar.",
