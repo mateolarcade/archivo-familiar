@@ -104,6 +104,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/1eZ1egtg6_MET5A62o_npBTDwffBvRmcF/preview"
   },
   {
+    id: "pecas-flequillos",
+    title: "Acto en Pecas y Flequillos",
+    description: "Año 1998. Acto en Jardín de Infantes Pecas y Flequillos, Bella VIsta",
+    category: "Recuerdos",
+    duration: "57 minutos",
+    year: "1998",
+    rating: "ATP",
+    location: "Bella Vista",
+    people: ["Fátima", "Mateo"],
+    poster: "assets/posters/pecas-flequillos.png",
+    drivePreviewUrl: "https://drive.google.com/file/d/1eZ1egtg6_MET5A62o_npBTDwffBvRmcF/preview"
+  },
+  {
     id: "papa-uritorco",
     title: "Papá Uritorco",
     description: "Experiencia en el Uritorco y recorrido familiar.",
