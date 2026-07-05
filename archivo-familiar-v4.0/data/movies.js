@@ -39,6 +39,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/1AarDRbPFeWV6Tm8I3CTTTuzcinhGg6QH/preview"
   },
   {
+    id: "mamama-video",
+    title: "Mamama",
+    description: "Un recorrido de fotos de Mamama de chica y fotos de toda la familia.",
+    category: "Recuerdos",
+    duration: "15 minutos",
+    year: "2011",
+    rating: "ATP",
+    location: "Bella Vista",
+    people: ["Mamama"],
+    poster: "assets/posters/video-mamama.png",
+    drivePreviewUrl: "https://drive.google.com/file/d/1vBzEBKrBf_6C3ZY6Ueo6TEYD9E4npNVj/preview"
+  },
+  {
     id: "papa-uritorco",
     title: "Papá Uritorco",
     description: "Experiencia en el Uritorco y recorrido familiar.",
