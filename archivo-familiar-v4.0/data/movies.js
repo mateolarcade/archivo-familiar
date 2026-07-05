@@ -26,6 +26,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/1HBVAqfLOmDzQyAlK48nGKyrgKFmF2avJ/preview"
   },
   {
+    id: "papino-italia",
+    title: "Papino: Viaje a Italia",
+    description: "Año 1999. Papino y Mariano van a Italia al pueblo Cassano allo'Ionio a buscar parientes Cipriota.",
+    category: "Viaje Familiar",
+    duration: "1 hora 20 minutos",
+    year: "1999",
+    rating: "ATP",
+    location: "Italia",
+    people: ["Papino"],
+    poster: "assets/posters/papino-italia.png",
+    drivePreviewUrl: "https://drive.google.com/file/d/1AarDRbPFeWV6Tm8I3CTTTuzcinhGg6QH/preview"
+  },
+  {
     id: "papa-uritorco",
     title: "Papá Uritorco",
     description: "Experiencia en el Uritorco y recorrido familiar.",
