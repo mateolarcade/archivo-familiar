@@ -35,7 +35,7 @@ window.MOVIES = [
     rating: "ATP",
     location: "Italia",
     people: ["Papino"],
-    poster: "assets/posters/papino-italia.png",
+    poster: "assets/posters/papino-italia-netflix.png",
     drivePreviewUrl: "https://drive.google.com/file/d/1AarDRbPFeWV6Tm8I3CTTTuzcinhGg6QH/preview"
   },
   {
