@@ -52,6 +52,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/1vBzEBKrBf_6C3ZY6Ueo6TEYD9E4npNVj/preview"
   },
   {
+    id: "peliculas-carballo",
+    title: "Peliculas en lo de Lucas Carballo",
+    description: "Años 2001 y 2002. Mateo con sus compañeros del colegio iban a lo de Lucas Carballo y filmaban películas.",
+    category: "Recuerdos",
+    duration: "2 horas",
+    year: "2001",
+    rating: "ATP",
+    location: "Bella Vista",
+    people: ["Mateo"],
+    poster: "assets/posters/peliculas-carballo.png",
+    drivePreviewUrl: "https://drive.google.com/file/d/1vkOo5R8wMDd4cTEDYVtC-jO_rnKiwcWd/preview"
+  },
+  {
     id: "papa-uritorco",
     title: "Papá Uritorco",
     description: "Experiencia en el Uritorco y recorrido familiar.",
