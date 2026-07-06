@@ -88,7 +88,7 @@ window.MOVIES = [
     location: "Bella Vista",
     people: ["Mateo"],
     poster: "assets/posters/peliculas-carballo-2.png",
-    drivePreviewUrl: ""
+    drivePreviewUrl: "https://drive.google.com/file/d/19iOrU2gsTo1K_J4t6qf_EIZFUbMqbRW9/preview"
   },
   {
     id: "comunion-mateo",
