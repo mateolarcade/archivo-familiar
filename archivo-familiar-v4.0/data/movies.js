@@ -117,6 +117,19 @@ window.MOVIES = [
     drivePreviewUrl: "https://drive.google.com/file/d/1eZ1egtg6_MET5A62o_npBTDwffBvRmcF/preview"
   },
   {
+    id: "cumple-maria-70",
+    title: "Cumple María 70",
+    description: "Año 2025. María festeja su cumpleaños 70 en la quinta Lo De Salazar, Bella VIsta",
+    category: "Cumpleaños",
+    duration: "55 min",
+    year: "2025",
+    rating: "ATP",
+    location: "Bella Vista",
+    people: ["Rafael", "Isabel", "Fátima", "Mateo"],
+    poster: "assets/posters/cumple-maria-70.png",
+    drivePreviewUrl: ""
+  },
+  {
     id: "pecas-flequillos",
     title: "Acto en Pecas y Flequillos",
     description: "Año 1998. Acto en Jardín de Infantes Pecas y Flequillos, Bella VIsta",
