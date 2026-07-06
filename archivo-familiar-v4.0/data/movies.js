@@ -132,10 +132,10 @@ window.MOVIES = [
   {
     id: "video-cowes",
     title: "Cowes & Cipriota",
-    description: "Año 2000. Las familias Cowes y Cipriota reunidas en la chacra de Capilla del Señor",
+    description: "Año 1999. Reunión de descendientes de Milton Marshall Cowes e Isabel Fortunata Guezamburu en la chacra.",
     category: "Reunión Familiar",
     duration: "30 min",
-    year: "2000",
+    year: "1999",
     rating: "ATP",
     location: "Capilla del Señor",
     people: ["Rafael", "Isabel", "Fátima", "Mateo"],
