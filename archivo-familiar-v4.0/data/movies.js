@@ -140,6 +140,6 @@ window.MOVIES = [
     location: "Bella Vista",
     people: ["Fátima", "Mateo"],
     poster: "assets/posters/pecas-flequillos.png",
-    drivePreviewUrl: "https://drive.google.com/file/d/1iuaHMcoHrQTv6DyT0ISkn_lflCVj6Oyg/preview"
+    drivePreviewUrl: "https://drive.google.com/file/d/1oYHQCOkMdUHuEZlipcs0R5ZSodIgvswj/preview"
   }
 ];
