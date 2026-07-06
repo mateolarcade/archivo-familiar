@@ -127,7 +127,7 @@ window.MOVIES = [
     location: "Bella Vista",
     people: ["Rafael", "Isabel", "Fátima", "Mateo"],
     poster: "assets/posters/cumple-maria-70.png",
-    drivePreviewUrl: ""
+    drivePreviewUrl: "https://drive.google.com/file/d/1iuaHMcoHrQTv6DyT0ISkn_lflCVj6Oyg/preview"
   },
   {
     id: "pecas-flequillos",
