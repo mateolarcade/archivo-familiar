@@ -140,7 +140,7 @@ window.MOVIES = [
     location: "Capilla del Señor",
     people: ["Rafael", "Isabel", "Fátima", "Mateo"],
     poster: "assets/posters/video-cowes.png",
-    drivePreviewUrl: ""
+    drivePreviewUrl: "https://drive.google.com/file/d/1hIcCcsg3cxdNjaXj3JWVbMPsrrnfSZIO/preview"
   },
   {
     id: "pecas-flequillos",
