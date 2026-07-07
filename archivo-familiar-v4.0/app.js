@@ -63,7 +63,7 @@
     passwordInput.disabled = true;
     passwordSubmit.disabled = true;
     passwordRetry.classList.remove("is-hidden");
-    passwordMessage.textContent = "Te quedaste sin intentos para ingresar. Por favor, comunicate con el representante familiar para obtener la contraseña correcta.";
+    passwordMessage.textContent = "Te quedaste sin intentos para ingresar. Por favor, comunicate con el representante de REC para obtener la contraseña correcta.";
   }
   function handlePasswordSubmit(event) {
     event.preventDefault();
@@ -98,7 +98,7 @@
     movieGrid.innerHTML = "";
     const fragment = document.createDocumentFragment();
     list.forEach((movie) => {
-      const category = movie.category || movie.type || "Video familiar";
+      const category = movie.category || movie.type || "Video REC";
       const card = document.createElement("article");
       card.className = "movie-card";
       card.innerHTML = "<a class=\"poster-link\" href=\"player.html?id=" + encodeURIComponent(movie.id) + "\" aria-label=\"Ver video de " + escapeAttribute(movie.title) + "\"><img src=\"" + escapeAttribute(movie.poster) + "\" alt=\"Portada de " + escapeAttribute(movie.title) + "\" loading=\"lazy\"><span class=\"poster-play-icon\" aria-hidden=\"true\">&#9658;</span><span class=\"play-badge\">Video</span></a><div class=\"movie-info\"><div class=\"movie-title-row\"><h3>" + escapeHtml(movie.title) + "</h3><span>" + escapeHtml(movie.rating || "ATP") + "</span></div><p>" + escapeHtml(movie.description) + "</p><div class=\"meta-row\"><span>" + escapeHtml(category) + "</span><span>" + escapeHtml(movie.duration) + "</span><span>" + escapeHtml(movie.year) + "</span></div></div>";
