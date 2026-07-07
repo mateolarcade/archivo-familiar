@@ -15,7 +15,12 @@
   <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://drive.google.com">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="brand.css?v=20260707-3">
+  <link rel="stylesheet" href="brand.css?v=20260707-4">
+  <script>
+    if (new URLSearchParams(window.location.search).get("catalog") === "1") {
+      document.documentElement.classList.add("skip-intro");
+    }
+  </script>
   <script src="data/config.js" defer></script>
   <script src="data/movies.js" defer></script>
   <script src="app.js" defer></script>
@@ -34,7 +39,7 @@
   </main>
   <section id="password-screen" class="password-screen is-hidden" aria-labelledby="password-title">
     <div class="password-panel">
-      <a class="brand password-brand" href="index.html" aria-label="REC"><img src="assets/brand/logo.svg" alt=""></a>
+      <span class="brand password-brand" aria-label="REC"><img src="assets/brand/logo.svg" alt=""></span>
       <h1 id="password-title">Ingresa la contraseña</h1>
       <form id="password-form" class="password-form">
         <label for="family-password">Contraseña</label>

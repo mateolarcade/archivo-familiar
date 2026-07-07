@@ -30,6 +30,15 @@
   width: 62px;
 }
 
+.skip-intro #intro-screen {
+  display: none !important;
+}
+
+.skip-intro #password-screen,
+.skip-intro #catalog-screen {
+  animation: none !important;
+}
+
 .site-header,
 .player-header {
   gap: 12px;
