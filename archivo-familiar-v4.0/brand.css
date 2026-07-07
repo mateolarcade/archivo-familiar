@@ -74,6 +74,20 @@
   overflow: visible;
 }
 
+.intro-start-label {
+  display: block;
+  margin-top: 18px;
+  color: #dfe3ec;
+  font-size: clamp(.95rem, 2vw, 1.15rem);
+  font-weight: 800;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.intro-screen.is-running .intro-start-label {
+  display: none;
+}
+
 .intro-rec-text {
   fill: #fff;
   opacity: 1;
