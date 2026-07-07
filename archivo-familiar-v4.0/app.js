@@ -29,6 +29,10 @@
     try { window.sessionStorage.setItem(ACCESS_STORAGE_KEY, "true"); }
     catch (error) {}
   }
+  function shouldOpenCatalogDirectly() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("catalog") === "1";
+  }
   function getIntroDuration() { return window.APP_CONFIG && Number.isFinite(window.APP_CONFIG.introDurationMs) ? window.APP_CONFIG.introDurationMs : 3000; }
   function createAudioContext() {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -200,5 +204,10 @@
     passwordInput.focus();
   });
   if (passwordRetry) passwordRetry.addEventListener("click", () => window.location.reload());
+  if (shouldOpenCatalogDirectly()) {
+    if (hasFamilyAccess()) showCatalog();
+    else showPasswordScreen();
+    return;
+  }
   if (introStartButton) introStartButton.addEventListener("click", startExperience);
 })();

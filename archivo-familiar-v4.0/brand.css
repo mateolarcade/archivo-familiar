@@ -30,6 +30,77 @@
   width: 62px;
 }
 
+.site-header,
+.player-header {
+  gap: 12px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.site-header .brand img {
+  width: 60px;
+}
+
+.player-header .brand img {
+  width: 44px;
+}
+
+.featured {
+  min-height: 120px !important;
+  padding-top: 18px !important;
+  padding-bottom: 16px !important;
+}
+
+.featured h1 {
+  font-size: clamp(1.7rem, 4.6vw, 3.5rem) !important;
+}
+
+.catalog-area {
+  padding-top: 12px !important;
+}
+
+.section-heading {
+  margin-bottom: 12px !important;
+}
+
+.player-content {
+  padding-top: 18px !important;
+}
+
+.detail-panel {
+  padding-top: 0 !important;
+}
+
+@media (max-width: 760px) {
+  .site-header,
+  .player-header {
+    gap: 10px;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  .site-header .brand img {
+    width: 54px;
+  }
+
+  .player-header .brand img {
+    width: 42px;
+  }
+
+  .featured {
+    padding-top: 18px !important;
+    padding-bottom: 16px !important;
+  }
+
+  .catalog-area {
+    padding-top: 12px !important;
+  }
+
+  .detail-layout {
+    padding-top: 28px !important;
+  }
+}
+
 .intro-sequence-logo {
   border: 0;
   padding: 0;

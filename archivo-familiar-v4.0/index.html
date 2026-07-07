@@ -15,7 +15,7 @@
   <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://drive.google.com">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="brand.css?v=20260707-2">
+  <link rel="stylesheet" href="brand.css?v=20260707-3">
   <script src="data/config.js" defer></script>
   <script src="data/movies.js" defer></script>
   <script src="app.js" defer></script>
@@ -35,8 +35,7 @@
   <section id="password-screen" class="password-screen is-hidden" aria-labelledby="password-title">
     <div class="password-panel">
       <a class="brand password-brand" href="index.html" aria-label="REC"><img src="assets/brand/logo.svg" alt=""></a>
-      <p class="eyebrow">Acceso REC</p>
-      <h1 id="password-title">Ingresa la contraseña de REC</h1>
+      <h1 id="password-title">Ingresa la contraseña</h1>
       <form id="password-form" class="password-form">
         <label for="family-password">Contraseña</label>
         <div class="password-row">
@@ -53,7 +52,7 @@
   </section>
   <section id="catalog-screen" class="catalog-screen is-hidden">
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Ir al catalogo"><img src="assets/brand/logo.svg" alt=""></a>
+      <a class="brand" href="index.html?catalog=1" aria-label="Ir al catalogo"><img src="assets/brand/logo.svg" alt=""></a>
       <form id="search-form" class="search-form" role="search">
         <input id="search-input" type="search" placeholder="Buscar por titulo, lugar, personas o categoria" aria-label="Buscar contenido">
         <button type="submit">Buscar</button>
@@ -61,12 +60,11 @@
     </header>
     <section class="featured" aria-labelledby="featured-title">
       <div class="featured-copy">
-        <p class="eyebrow">REC privado</p>
         <h1 id="featured-title">Recuerdos para volver a mirar</h1>
       </div>
     </section>
     <section class="catalog-area" aria-labelledby="catalog-title">
-      <div class="section-heading"><div><p class="eyebrow">Catalogo</p><h2 id="catalog-title">Videos disponibles</h2></div><p id="results-count" class="results-count"></p></div>
+      <div class="section-heading"><div><h2 id="catalog-title">Videos disponibles</h2></div><p id="results-count" class="results-count"></p></div>
       <div id="movie-grid" class="movie-grid" aria-live="polite"></div>
       <div id="empty-state" class="empty-state is-hidden"><h3>No se encontraron resultados</h3><p>Proba con otro titulo, lugar, persona, categoria o palabra de la descripcion.</p></div>
     </section>
