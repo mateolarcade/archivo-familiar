@@ -3,6 +3,7 @@
   const MAX_PASSWORD_ATTEMPTS = 3;
   const ACCESS_STORAGE_KEY = "archivoFamiliarAccessGranted";
   const introScreen = document.getElementById("intro-screen");
+  const introStartButton = document.getElementById("intro-start-button");
   const passwordScreen = document.getElementById("password-screen");
   const passwordForm = document.getElementById("password-form");
   const passwordInput = document.getElementById("family-password");
@@ -19,6 +20,7 @@
   const movies = Array.isArray(window.MOVIES) ? window.MOVIES : [];
   const sortedMovies = movies.slice().sort(compareMovies);
   let remainingPasswordAttempts = MAX_PASSWORD_ATTEMPTS;
+  let introHasStarted = false;
   function hasFamilyAccess() {
     try { return window.sessionStorage.getItem(ACCESS_STORAGE_KEY) === "true"; }
     catch (error) { return false; }
@@ -147,6 +149,10 @@
     passwordInput.focus();
   }
   function startExperience() {
+    if (introHasStarted) return;
+    introHasStarted = true;
+    introScreen.classList.add("is-running");
+    if (introStartButton) introStartButton.disabled = true;
     playIntroSequenceSound();
     window.setTimeout(() => {
       if (hasFamilyAccess()) {
@@ -194,5 +200,5 @@
     passwordInput.focus();
   });
   if (passwordRetry) passwordRetry.addEventListener("click", () => window.location.reload());
-  startExperience();
+  if (introStartButton) introStartButton.addEventListener("click", startExperience);
 })();

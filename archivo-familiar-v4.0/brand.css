@@ -31,6 +31,20 @@
 }
 
 .intro-sequence-logo {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  animation: none;
+}
+
+.intro-sequence-logo:focus-visible {
+  outline: 2px solid #ff1b1b;
+  outline-offset: 14px;
+}
+
+.intro-screen.is-running .intro-sequence-logo {
+  cursor: default;
   animation: introSequenceFade 6s linear forwards;
 }
 
@@ -43,14 +57,14 @@
 
 .intro-rec-text {
   fill: #fff;
-  opacity: 0;
-  animation: introTextPower 6s linear forwards;
+  opacity: 1;
+  animation: none;
 }
 
 .intro-rec-ring-fill {
   fill: #fff;
   opacity: 0;
-  animation: introRingFill 6s linear forwards;
+  animation: none;
 }
 
 .intro-rec-ring-stroke {
@@ -61,12 +75,28 @@
   stroke-linejoin: round;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: introRingDraw 6s linear forwards;
+  animation: none;
 }
 
 .intro-rec-dot {
   fill: red;
   opacity: 0;
+  animation: none;
+}
+
+.intro-screen.is-running .intro-rec-text {
+  animation: introTextPower 6s linear forwards;
+}
+
+.intro-screen.is-running .intro-rec-ring-fill {
+  animation: introRingFill 6s linear forwards;
+}
+
+.intro-screen.is-running .intro-rec-ring-stroke {
+  animation: introRingDraw 6s linear forwards;
+}
+
+.intro-screen.is-running .intro-rec-dot {
   animation: introDotRecord 6s linear forwards;
 }
 
