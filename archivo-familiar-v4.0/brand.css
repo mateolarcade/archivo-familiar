@@ -1,0 +1,31 @@
+.intro-logo {
+  place-items: center;
+  filter: drop-shadow(0 0 24px rgba(255, 27, 27, .32));
+}
+
+.intro-logo img {
+  width: clamp(190px, 34vw, 440px);
+  height: auto;
+  display: block;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  filter: drop-shadow(0 0 10px rgba(255, 27, 27, .22));
+}
+
+.brand img {
+  width: 86px;
+  height: auto;
+  display: block;
+}
+
+.password-brand img {
+  width: 112px;
+}
+
+.brand.small img {
+  width: 62px;
+}

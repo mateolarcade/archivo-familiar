@@ -5,9 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Detalle y reproductor de REC con videos protegidos por Google Drive.">
   <title>Detalle | REC</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/brand/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/brand/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/brand/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="mask-icon" href="assets/brand/mask-icon.svg" color="#000000">
+  <link rel="manifest" href="assets/brand/site.webmanifest">
+  <meta name="msapplication-config" content="assets/brand/browserconfig.xml">
+  <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://drive.google.com">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="brand.css">
   <script src="data/movies.js" defer></script>
   <script src="player.js" defer></script>
 </head>
@@ -15,7 +23,7 @@
   <main class="player-shell">
     <header class="player-header">
       <a class="back-link" href="index.html">Volver al catalogo</a>
-      <a class="brand small" href="index.html" aria-label="Ir al catalogo"><span>REC</span></a>
+      <a class="brand small" href="index.html" aria-label="Ir al catalogo"><img src="assets/brand/logo.svg" alt=""></a>
     </header>
     <section id="player-content" class="player-content"><div class="loader" aria-label="Cargando detalle"></div></section>
   </main>
