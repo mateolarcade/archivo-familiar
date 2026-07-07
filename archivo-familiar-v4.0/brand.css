@@ -74,24 +74,27 @@
   overflow: visible;
 }
 
-.intro-start-label {
+.intro-logo .intro-start-label {
   display: block;
   margin-top: 22px;
   color: #dfe3ec;
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0;
+  line-height: 1.2;
   text-align: center;
+  text-transform: none;
+  transform: none;
 }
 
 @media (max-width: 760px) {
-  .intro-start-label {
+  .intro-logo .intro-start-label {
     margin-top: 18px;
     font-size: .9rem;
   }
 }
 
-.intro-screen.is-running .intro-start-label {
+.intro-screen.is-running .intro-logo .intro-start-label {
   display: none;
 }
 
