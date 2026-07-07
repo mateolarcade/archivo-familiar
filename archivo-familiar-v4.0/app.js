@@ -28,6 +28,68 @@
     catch (error) {}
   }
   function getIntroDuration() { return window.APP_CONFIG && Number.isFinite(window.APP_CONFIG.introDurationMs) ? window.APP_CONFIG.introDurationMs : 3000; }
+  function createAudioContext() {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return null;
+    try { return new AudioContext(); }
+    catch (error) { return null; }
+  }
+  function scheduleTone(audioContext, startTime, duration, frequency, volume, type) {
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    oscillator.type = type || "sine";
+    oscillator.frequency.setValueAtTime(frequency, startTime);
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.exponentialRampToValueAtTime(volume, startTime + 0.018);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+    oscillator.start(startTime);
+    oscillator.stop(startTime + duration + 0.02);
+  }
+  function scheduleTvStatic(audioContext, startTime, duration) {
+    const sampleRate = audioContext.sampleRate;
+    const buffer = audioContext.createBuffer(1, sampleRate * duration, sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let index = 0; index < data.length; index += 1) {
+      data[index] = (Math.random() * 2 - 1) * 0.46;
+    }
+    const noise = audioContext.createBufferSource();
+    const filter = audioContext.createBiquadFilter();
+    const gain = audioContext.createGain();
+    noise.buffer = buffer;
+    filter.type = "bandpass";
+    filter.frequency.setValueAtTime(1800, startTime);
+    filter.frequency.linearRampToValueAtTime(3400, startTime + duration);
+    filter.Q.setValueAtTime(0.72, startTime);
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.linearRampToValueAtTime(0.09, startTime + 0.12);
+    gain.gain.setValueAtTime(0.09, startTime + duration - 0.18);
+    gain.gain.linearRampToValueAtTime(0.0001, startTime + duration);
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(audioContext.destination);
+    noise.start(startTime);
+    noise.stop(startTime + duration);
+  }
+  function playIntroSequenceSound() {
+    const audioContext = createAudioContext();
+    if (!audioContext) return;
+    if (audioContext.state === "suspended") {
+      audioContext.resume().catch(() => {});
+    }
+    const now = audioContext.currentTime + 0.03;
+    scheduleTone(audioContext, now, 0.34, 72, 0.18, "sawtooth");
+    scheduleTone(audioContext, now + 0.03, 0.24, 1180, 0.045, "square");
+    scheduleTone(audioContext, now + 0.18, 0.28, 54, 0.11, "sine");
+    scheduleTvStatic(audioContext, now + 0.8, 2.35);
+    [3.3, 3.95, 4.5].forEach((offset) => {
+      scheduleTone(audioContext, now + offset, 0.22, 880, 0.13, "sine");
+      scheduleTone(audioContext, now + offset + 0.02, 0.2, 1760, 0.035, "triangle");
+    });
+    scheduleTone(audioContext, now + 4.5, 0.5, 880, 0.07, "sine");
+    window.setTimeout(() => audioContext.close().catch(() => {}), getIntroDuration() + 140);
+  }
   function showPasswordScreen() {
     introScreen.classList.add("is-hidden");
     passwordScreen.classList.remove("is-hidden");
@@ -83,7 +145,16 @@
     passwordMessage.textContent = "La contraseña ingresada es incorrecta. Intentos restantes: " + remainingPasswordAttempts;
     passwordInput.focus();
   }
-  function startExperience() { if (hasFamilyAccess()) { showCatalog(); return; } window.setTimeout(showPasswordScreen, getIntroDuration()); }
+  function startExperience() {
+    playIntroSequenceSound();
+    window.setTimeout(() => {
+      if (hasFamilyAccess()) {
+        showCatalog();
+        return;
+      }
+      showPasswordScreen();
+    }, getIntroDuration());
+  }
   function getMovieSearchText(movie) {
     return [movie.title, movie.description, movie.category, movie.type, movie.duration, movie.year, movie.location, Array.isArray(movie.people) ? movie.people.join(" ") : movie.people].join(" ").toLowerCase();
   }

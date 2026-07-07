@@ -29,3 +29,66 @@
 .brand.small img {
   width: 62px;
 }
+
+.intro-sequence-logo {
+  animation: introSequenceFade 5s ease-in-out forwards;
+}
+
+.intro-rec-mark {
+  width: clamp(190px, 34vw, 440px);
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.intro-rec-text {
+  fill: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 180px;
+  font-weight: 800;
+  letter-spacing: 0;
+  opacity: 0;
+  animation: introTextPower 5s linear forwards;
+}
+
+.intro-rec-ring {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 56;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: introRingDraw 5s linear forwards;
+}
+
+.intro-rec-dot {
+  fill: #ff1b1b;
+  opacity: 0;
+  animation: introDotRecord 5s linear forwards;
+}
+
+@keyframes introTextPower {
+  0% { opacity: 0; filter: blur(4px); transform: scale(.98); }
+  8% { opacity: 1; filter: blur(0); transform: scale(1); }
+  100% { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
+@keyframes introRingDraw {
+  0%, 16% { stroke-dashoffset: 1000; }
+  62% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes introDotRecord {
+  0%, 65% { opacity: 0; }
+  66%, 73% { opacity: 1; }
+  74%, 78% { opacity: 0; }
+  79%, 85% { opacity: 1; }
+  86%, 89% { opacity: 0; }
+  90%, 100% { opacity: 1; }
+}
+
+@keyframes introSequenceFade {
+  0%, 92% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.04); }
+}
