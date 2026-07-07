@@ -33,21 +33,33 @@
 .intro-sequence-logo {
   border: 0;
   padding: 0;
-  background: transparent;
+  color: inherit;
+  background: transparent !important;
   cursor: pointer;
   animation: none;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .intro-sequence-logo:hover,
 .intro-sequence-logo:active,
-.intro-sequence-logo:disabled {
-  background: transparent;
+.intro-sequence-logo:focus,
+.intro-sequence-logo:focus-visible,
+.intro-sequence-logo:disabled,
+.intro-screen .intro-sequence-logo:hover,
+.intro-screen .intro-sequence-logo:active,
+.intro-screen .intro-sequence-logo:focus,
+.intro-screen .intro-sequence-logo:focus-visible,
+.intro-screen .intro-sequence-logo:disabled {
+  color: inherit;
+  background: transparent !important;
+  box-shadow: none;
   transform: none;
 }
 
 .intro-sequence-logo:focus-visible {
-  outline: 2px solid #ff1b1b;
-  outline-offset: 14px;
+  outline: none;
 }
 
 .intro-screen.is-running .intro-sequence-logo {
