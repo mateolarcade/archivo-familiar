@@ -31,11 +31,11 @@
 }
 
 .intro-sequence-logo {
-  animation: introSequenceFade 5s ease-in-out forwards;
+  animation: introSequenceFade 6s linear forwards;
 }
 
 .intro-rec-mark {
-  width: clamp(190px, 34vw, 440px);
+  width: clamp(220px, 38vw, 500px);
   height: auto;
   display: block;
   overflow: visible;
@@ -48,7 +48,7 @@
   font-weight: 800;
   letter-spacing: 0;
   opacity: 0;
-  animation: introTextPower 5s linear forwards;
+  animation: introTextPower 6s linear forwards;
 }
 
 .intro-rec-ring {
@@ -58,37 +58,42 @@
   stroke-linecap: round;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: introRingDraw 5s linear forwards;
+  animation: introRingDraw 6s linear forwards;
 }
 
 .intro-rec-dot {
   fill: #ff1b1b;
   opacity: 0;
-  animation: introDotRecord 5s linear forwards;
+  animation: introDotRecord 6s linear forwards;
 }
 
 @keyframes introTextPower {
   0% { opacity: 0; filter: blur(4px); transform: scale(.98); }
-  8% { opacity: 1; filter: blur(0); transform: scale(1); }
+  16.667% { opacity: 1; filter: blur(0); transform: scale(1); }
   100% { opacity: 1; filter: blur(0); transform: scale(1); }
 }
 
 @keyframes introRingDraw {
-  0%, 16% { stroke-dashoffset: 1000; }
-  62% { stroke-dashoffset: 0; }
+  0%, 16.667% { stroke-dashoffset: 1000; }
+  83.333% { stroke-dashoffset: 0; }
   100% { stroke-dashoffset: 0; }
 }
 
 @keyframes introDotRecord {
-  0%, 65% { opacity: 0; }
-  66%, 73% { opacity: 1; }
-  74%, 78% { opacity: 0; }
-  79%, 85% { opacity: 1; }
-  86%, 89% { opacity: 0; }
-  90%, 100% { opacity: 1; }
+  0%, 16.667% { opacity: 0; }
+  18%, 24% { opacity: 1; }
+  25%, 31% { opacity: 0; }
+  32%, 38% { opacity: 1; }
+  39%, 45% { opacity: 0; }
+  46%, 52% { opacity: 1; }
+  53%, 59% { opacity: 0; }
+  60%, 66% { opacity: 1; }
+  67%, 73% { opacity: 0; }
+  74%, 82% { opacity: 1; }
+  83.333%, 100% { opacity: 1; }
 }
 
 @keyframes introSequenceFade {
-  0%, 92% { opacity: 1; transform: scale(1); }
+  0%, 66.667% { opacity: 1; transform: scale(1); }
   100% { opacity: 0; transform: scale(1.04); }
 }

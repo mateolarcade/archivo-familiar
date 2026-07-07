@@ -79,15 +79,16 @@
       audioContext.resume().catch(() => {});
     }
     const now = audioContext.currentTime + 0.03;
-    scheduleTone(audioContext, now, 0.34, 72, 0.18, "sawtooth");
-    scheduleTone(audioContext, now + 0.03, 0.24, 1180, 0.045, "square");
-    scheduleTone(audioContext, now + 0.18, 0.28, 54, 0.11, "sine");
-    scheduleTvStatic(audioContext, now + 0.8, 2.35);
-    [3.3, 3.95, 4.5].forEach((offset) => {
-      scheduleTone(audioContext, now + offset, 0.22, 880, 0.13, "sine");
-      scheduleTone(audioContext, now + offset + 0.02, 0.2, 1760, 0.035, "triangle");
+    scheduleTone(audioContext, now, 0.74, 64, 0.18, "sawtooth");
+    scheduleTone(audioContext, now + 0.05, 0.28, 1280, 0.045, "square");
+    scheduleTone(audioContext, now + 0.36, 0.48, 48, 0.13, "sine");
+    scheduleTvStatic(audioContext, now + 1, 4);
+    [1.08, 1.92, 2.76, 3.6, 4.44].forEach((offset) => {
+      scheduleTone(audioContext, now + offset, 0.18, 1040, 0.12, "sine");
+      scheduleTone(audioContext, now + offset + 0.018, 0.16, 2080, 0.032, "triangle");
     });
-    scheduleTone(audioContext, now + 4.5, 0.5, 880, 0.07, "sine");
+    scheduleTone(audioContext, now + 5, 1, 1040, 0.08, "sine");
+    scheduleTone(audioContext, now + 5, 1, 2080, 0.022, "triangle");
     window.setTimeout(() => audioContext.close().catch(() => {}), getIntroDuration() + 140);
   }
   function showPasswordScreen() {
