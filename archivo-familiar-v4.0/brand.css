@@ -43,26 +43,29 @@
 
 .intro-rec-text {
   fill: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 180px;
-  font-weight: 800;
-  letter-spacing: 0;
   opacity: 0;
   animation: introTextPower 6s linear forwards;
 }
 
-.intro-rec-ring {
+.intro-rec-ring-fill {
+  fill: #fff;
+  opacity: 0;
+  animation: introRingFill 6s linear forwards;
+}
+
+.intro-rec-ring-stroke {
   fill: none;
   stroke: #fff;
   stroke-width: 56;
   stroke-linecap: round;
+  stroke-linejoin: round;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: introRingDraw 6s linear forwards;
 }
 
 .intro-rec-dot {
-  fill: #ff1b1b;
+  fill: red;
   opacity: 0;
   animation: introDotRecord 6s linear forwards;
 }
@@ -77,6 +80,11 @@
   0%, 16.667% { stroke-dashoffset: 1000; }
   83.333% { stroke-dashoffset: 0; }
   100% { stroke-dashoffset: 0; }
+}
+
+@keyframes introRingFill {
+  0%, 82% { opacity: 0; }
+  83.333%, 100% { opacity: 1; }
 }
 
 @keyframes introDotRecord {
