@@ -17,8 +17,8 @@
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 10px;
-  background: #fff;
-  color: #050609;
+  background: transparent;
+  color: #fff;
 }
 
 .menu-button span {
@@ -29,8 +29,8 @@
 }
 
 .menu-button:hover {
-  background: #fff;
-  color: #050609;
+  background: rgba(255, 255, 255, .08);
+  color: #fff;
 }
 
 .help-menu {
