@@ -15,6 +15,7 @@
   <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://drive.google.com">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navigation.css">
   <link rel="stylesheet" href="brand.css?v=20260707-4">
   <script>
     if (new URLSearchParams(window.location.search).get("catalog") === "1") {
@@ -23,6 +24,9 @@
   </script>
   <script src="data/config.js" defer></script>
   <script src="data/movies.js" defer></script>
+  <script src="data/photos.js" defer></script>
+  <script src="data/audios.js" defer></script>
+  <script src="data/documents.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body data-page="home">
@@ -57,7 +61,23 @@
   </section>
   <section id="catalog-screen" class="catalog-screen is-hidden">
     <header class="site-header">
-      <a class="brand" href="index.html?catalog=1" aria-label="Ir al catalogo"><img src="assets/brand/logo.svg" alt=""></a>
+      <div class="header-start">
+        <button id="menu-button" class="menu-button" type="button" aria-label="Abrir opciones" aria-expanded="false" aria-controls="help-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a class="brand" href="index.html?catalog=1" aria-label="Ir al catalogo"><img src="assets/brand/logo.svg" alt=""></a>
+        <nav class="main-nav" aria-label="Secciones de REC">
+          <a class="nav-link is-active" href="index.html?catalog=1&section=videos" data-section-link="videos">Videos</a>
+          <a class="nav-link" href="index.html?catalog=1&section=photos" data-section-link="photos">Fotos</a>
+          <a class="nav-link" href="index.html?catalog=1&section=audios" data-section-link="audios">Audios</a>
+          <a class="nav-link" href="index.html?catalog=1&section=documents" data-section-link="documents">Documentos</a>
+        </nav>
+        <div id="help-menu" class="help-menu is-hidden">
+          <a href="index.html?catalog=1&section=help" data-section-link="help"><span class="help-menu-icon" aria-hidden="true">?</span>Centro de Ayuda</a>
+        </div>
+      </div>
       <form id="search-form" class="search-form" role="search">
         <input id="search-input" type="search" placeholder="Buscar por titulo, lugar, personas o categoria" aria-label="Buscar contenido">
         <button type="submit">Buscar</button>
@@ -72,6 +92,14 @@
       <div class="section-heading"><div><h2 id="catalog-title">Videos disponibles</h2></div><p id="results-count" class="results-count"></p></div>
       <div id="movie-grid" class="movie-grid" aria-live="polite"></div>
       <div id="empty-state" class="empty-state is-hidden"><h3>No se encontraron resultados</h3><p>Proba con otro titulo, lugar, persona, categoria o palabra de la descripcion.</p></div>
+    </section>
+    <section id="help-screen" class="help-screen is-hidden" aria-labelledby="help-title">
+      <article class="help-panel">
+        <h2 id="help-title">Centro de Ayuda</h2>
+        <p>Los videos de REC se encuentran protegidos mediante los permisos de Google Drive.</p>
+        <p>Si el video no se reproduce o aparece un mensaje indicando que no tenes acceso, significa que tu cuenta de Google todavia no fue autorizada para visualizar la coleccion.</p>
+        <p>Cuando el administrador comparta la carpeta con tu cuenta de Google, automaticamente podras acceder a todos los videos disponibles sin necesidad de solicitar permisos nuevamente para cada uno.</p>
+      </article>
     </section>
   </section>
 </body>

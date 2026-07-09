@@ -17,8 +17,25 @@
   const movieGrid = document.getElementById("movie-grid");
   const emptyState = document.getElementById("empty-state");
   const resultsCount = document.getElementById("results-count");
+  const catalogTitle = document.getElementById("catalog-title");
+  const catalogArea = document.querySelector(".catalog-area");
+  const featuredSection = document.querySelector(".featured");
+  const helpScreen = document.getElementById("help-screen");
+  const menuButton = document.getElementById("menu-button");
+  const helpMenu = document.getElementById("help-menu");
+  const sectionLinks = Array.from(document.querySelectorAll("[data-section-link]"));
   const movies = Array.isArray(window.MOVIES) ? window.MOVIES : [];
   const sortedMovies = movies.slice().sort(compareMovies);
+  const photos = Array.isArray(window.PHOTOS) ? window.PHOTOS : [];
+  const audios = Array.isArray(window.AUDIOS) ? window.AUDIOS : [];
+  const documents = Array.isArray(window.DOCUMENTS) ? window.DOCUMENTS : [];
+  const sections = {
+    videos: { title: "Videos disponibles", empty: "No se encontraron videos", items: sortedMovies, badge: "Video", linkLabel: "Ver video de " },
+    photos: { title: "Fotos disponibles", empty: "No se encontraron fotos", items: photos, badge: "Foto", linkLabel: "Ver foto " },
+    audios: { title: "Audios disponibles", empty: "No se encontraron audios", items: audios, badge: "Audio", linkLabel: "Escuchar audio " },
+    documents: { title: "Documentos disponibles", empty: "No se encontraron documentos", items: documents, badge: "Documento", linkLabel: "Abrir documento " }
+  };
+  let currentSection = getRequestedSection();
   let remainingPasswordAttempts = MAX_PASSWORD_ATTEMPTS;
   let introHasStarted = false;
   function hasFamilyAccess() {
@@ -106,7 +123,7 @@
     introScreen.classList.add("is-hidden");
     passwordScreen.classList.add("is-hidden");
     catalogScreen.classList.remove("is-hidden");
-    renderMovies(sortedMovies);
+    showSection(currentSection);
   }
   function playAccessSound() {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -166,8 +183,13 @@
       showPasswordScreen();
     }, getIntroDuration());
   }
-  function getMovieSearchText(movie) {
-    return [movie.title, movie.description, movie.category, movie.type, movie.duration, movie.year, movie.location, Array.isArray(movie.people) ? movie.people.join(" ") : movie.people].join(" ").toLowerCase();
+  function getRequestedSection() {
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get("section") || "videos";
+    return section === "help" || sections[section] ? section : "videos";
+  }
+  function getItemSearchText(item) {
+    return [item.title, item.description, item.category, item.type, item.duration, item.year, item.location, Array.isArray(item.people) ? item.people.join(" ") : item.people].join(" ").toLowerCase();
   }
   function compareMovies(firstMovie, secondMovie) {
     const firstYear = Number.parseInt(firstMovie.year, 10);
@@ -176,25 +198,67 @@
     if (yearComparison !== 0) return yearComparison;
     return String(firstMovie.title || "").localeCompare(String(secondMovie.title || ""), "es", { sensitivity: "base" });
   }
-  function renderMovies(list) {
+  function showSection(sectionName) {
+    currentSection = sectionName === "help" || sections[sectionName] ? sectionName : "videos";
+    const isHelp = currentSection === "help";
+    if (featuredSection) featuredSection.classList.toggle("is-hidden", isHelp);
+    if (catalogArea) catalogArea.classList.toggle("is-hidden", isHelp);
+    if (helpScreen) helpScreen.classList.toggle("is-hidden", !isHelp);
+    if (searchForm) searchForm.classList.toggle("is-hidden", isHelp);
+    if (searchInput) searchInput.value = "";
+    sectionLinks.forEach((link) => link.classList.toggle("is-active", link.dataset.sectionLink === currentSection));
+    if (helpMenu) helpMenu.classList.add("is-hidden");
+    if (menuButton) menuButton.setAttribute("aria-expanded", "false");
+    if (isHelp) {
+      document.title = "REC | Centro de Ayuda";
+      return;
+    }
+    const section = sections[currentSection];
+    document.title = "REC | " + section.title;
+    catalogTitle.textContent = section.title;
+    renderItems(section.items, section);
+  }
+  function renderItems(list, section) {
     movieGrid.innerHTML = "";
     const fragment = document.createDocumentFragment();
-    list.forEach((movie) => {
-      const category = movie.category || movie.type || "Video REC";
+    list.forEach((item) => {
+      const category = item.category || item.type || section.badge + " REC";
+      const href = getItemHref(item, section);
+      const imageMarkup = item.poster || item.thumbnail ? "<img src=\"" + escapeAttribute(item.poster || item.thumbnail) + "\" alt=\"Portada de " + escapeAttribute(item.title) + "\" loading=\"lazy\">" : "<span class=\"poster-placeholder\">" + escapeHtml(section.badge) + "</span>";
       const card = document.createElement("article");
       card.className = "movie-card";
-      card.innerHTML = "<a class=\"poster-link\" href=\"player.html?id=" + encodeURIComponent(movie.id) + "\" aria-label=\"Ver video de " + escapeAttribute(movie.title) + "\"><img src=\"" + escapeAttribute(movie.poster) + "\" alt=\"Portada de " + escapeAttribute(movie.title) + "\" loading=\"lazy\"><span class=\"poster-play-icon\" aria-hidden=\"true\">&#9658;</span><span class=\"play-badge\">Video</span></a><div class=\"movie-info\"><div class=\"movie-title-row\"><h3>" + escapeHtml(movie.title) + "</h3><span>" + escapeHtml(movie.rating || "ATP") + "</span></div><p>" + escapeHtml(movie.description) + "</p><div class=\"meta-row\"><span>" + escapeHtml(category) + "</span><span>" + escapeHtml(movie.duration) + "</span><span>" + escapeHtml(movie.year) + "</span></div></div>";
+      card.innerHTML = "<a class=\"poster-link\" href=\"" + escapeAttribute(href) + "\" aria-label=\"" + escapeAttribute(section.linkLabel + item.title) + "\">" + imageMarkup + "<span class=\"poster-play-icon\" aria-hidden=\"true\">&#9658;</span><span class=\"play-badge\">" + escapeHtml(section.badge) + "</span></a><div class=\"movie-info\"><div class=\"movie-title-row\"><h3>" + escapeHtml(item.title) + "</h3><span>" + escapeHtml(item.rating || "ATP") + "</span></div><p>" + escapeHtml(item.description) + "</p><div class=\"meta-row\"><span>" + escapeHtml(category) + "</span><span>" + escapeHtml(item.duration || item.format || "") + "</span><span>" + escapeHtml(item.year || "") + "</span></div></div>";
       fragment.appendChild(card);
     });
     movieGrid.appendChild(fragment);
     emptyState.classList.toggle("is-hidden", list.length > 0);
+    emptyState.querySelector("h3").textContent = section.empty;
     resultsCount.textContent = list.length === 1 ? "1 resultado" : list.length + " resultados";
   }
-  function handleSearch(event) { event.preventDefault(); const query = searchInput.value.trim().toLowerCase(); renderMovies(query ? sortedMovies.filter((movie) => getMovieSearchText(movie).includes(query)) : sortedMovies); }
+  function getItemHref(item, section) {
+    if (section === sections.videos) return "player.html?id=" + encodeURIComponent(item.id);
+    return item.url || item.src || "#";
+  }
+  function handleSearch(event) {
+    event.preventDefault();
+    const section = sections[currentSection] || sections.videos;
+    const query = searchInput.value.trim().toLowerCase();
+    renderItems(query ? section.items.filter((item) => getItemSearchText(item).includes(query)) : section.items, section);
+  }
   function escapeHtml(value) { return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
   function escapeAttribute(value) { return escapeHtml(value).replaceAll("\x60", "&#096;"); }
   if (searchForm) searchForm.addEventListener("submit", handleSearch);
   if (searchInput) searchInput.addEventListener("input", handleSearch);
+  if (menuButton && helpMenu) menuButton.addEventListener("click", () => {
+    const isOpen = helpMenu.classList.toggle("is-hidden") === false;
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+  });
+  sectionLinks.forEach((link) => link.addEventListener("click", (event) => {
+    event.preventDefault();
+    showSection(link.dataset.sectionLink);
+    window.history.pushState({}, "", link.href);
+  }));
+  window.addEventListener("popstate", () => showSection(getRequestedSection()));
   if (passwordForm) passwordForm.addEventListener("submit", handlePasswordSubmit);
   if (passwordToggle && passwordInput) passwordToggle.addEventListener("click", () => {
     const shouldShow = passwordInput.type === "password";
