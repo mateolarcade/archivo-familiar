@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="REC, catalogo privado de videos protegidos con Google Drive.">
+  <title>REC</title>
+  <link rel="icon" href="assets/brand/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/brand/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/brand/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="mask-icon" href="assets/brand/mask-icon.svg" color="#000000">
+  <link rel="manifest" href="assets/brand/site.webmanifest">
+  <meta name="msapplication-config" content="assets/brand/browserconfig.xml">
+  <meta name="theme-color" content="#000000">
+  <link rel="preconnect" href="https://drive.google.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="brand.css?v=20260707-4">
+  <script>
+    if (new URLSearchParams(window.location.search).get("catalog") === "1") {
+      document.documentElement.classList.add("skip-intro");
+    }
+  </script>
+  <script src="data/config.js" defer></script>
+  <script src="data/movies.js" defer></script>
+  <script src="data/photos.js" defer></script>
+  <script src="data/audios.js" defer></script>
+  <script src="data/documents.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-page="home">
+  <main id="intro-screen" class="intro-screen" aria-label="Presentacion REC">
+    <button id="intro-start-button" class="intro-logo intro-sequence-logo" type="button" aria-label="Iniciar REC">
+      <svg class="intro-rec-mark" viewBox="0 0 1024 1024" aria-hidden="true">
+        <path class="intro-rec-ring-fill" d="M469 195.6c-86.7 11.1-162.9 57.1-211 127.6-26.8 39.2-43.5 85.5-48.6 134.8-2 19.4-1.5 53.8 1.1 71 8.1 55.7 24.2 95.9 54.4 136.5 9.9 13.2 25.3 30.8 33.2 37.9 28.9 26 49.6 40.4 78.4 54.6 41.2 20.2 78.4 29.5 123.5 30.7 73.2 2 143.9-22.9 201.6-71 25.7-21.4 52.8-52.9 63.3-73.4 4.2-8.3 2-14.7-7.1-20.7-6.6-4.3-24.4-10.6-28.1-9.9-3 .6-6.5 4.3-22 23-35.9 43.4-77.7 72.4-124.7 86.6-26.1 7.9-46.7 10.9-76 10.9-36 0-62.6-4.9-93-17-57.8-23-106.5-69.5-132.7-126.7-9.7-21.2-17.6-50.3-20.3-75.2-1.2-11.1-.9-52.5.5-60.3 6.2-35 13.1-56.3 26.5-81.7 9.4-17.6 15.4-26.6 28.6-42.3 8.2-9.7 22.7-23.9 32.9-32.1 26.5-21.4 64.1-40 98.7-48.8 20.4-5.2 32.1-6.5 58.3-6.6 23 0 26.3.2 40.5 2.8 25.2 4.4 42.5 10 65.6 21.1 22.9 11 37.9 20.9 55.3 36.5 19 17 31.3 31.2 43.3 50 4 6.3 9.2 13.4 11.4 15.8 3.5 3.7 4.7 4.3 8.1 4.3 2.2 0 5.9-.7 8.2-1.5 7.3-2.6 21-9.7 23.3-12.2 5.3-5.7 1.9-15.9-12.4-37.9-23.4-35.9-59.2-68.5-100.4-91.3-34.8-19.3-68.2-30.2-106.8-35.1-19-2.4-56.6-2.6-73.6-.4" />
+        <path class="intro-rec-ring-stroke" pathLength="1000" d="M760 365 C712 286 618 235 508 235 C365 235 255 346 255 493 C255 636 367 736 506 736 C596 736 672 698 733 624" />
+        <path class="intro-rec-text" d="M613.7 430.1c-30.3 7.4-49.7 32.5-49.7 64.1 0 31.3 19.1 57.9 47 65.8 15.4 4.3 31.8 3.6 46.5-2.2 11-4.3 26.5-16.5 26.5-20.9 0-1.6-13.5-13.9-15.3-13.9-.6 0-5 2.2-9.7 4.9-10.9 6.3-19 8.5-29 7.8-18.2-1.2-30.9-11-36-27.5-6.4-20.6 2.6-42.5 20.8-51 5.1-2.4 6.8-2.7 16.7-2.6 12 .1 17.2 1.7 26.9 8.3 2.5 1.7 5.4 3.1 6.6 3.1 2.7 0 16-12.6 16-15.1 0-4.7-22.7-18-36.2-21.3-8.8-2.1-21.4-1.9-31.1.5m-267.8 1.1c-1.8.3-4.1 1.7-5.1 3-1.6 2.2-1.8 6.1-1.8 61.6v59.4l2.9 2.9c2.7 2.7 3.5 2.9 10.5 2.9 8.5 0 11.9-1.2 13.5-4.7.7-1.4 1.1-9.2 1.1-19.8V519h9.8c5.3 0 10.2.4 10.7.8.6.4 5.9 8.8 11.8 18.7 6 9.9 11.9 19 13.3 20.2 2.2 2.1 3.6 2.3 12.3 2.3 11.1 0 13.7-1.2 14.6-6.5.6-3.4.9-2.8-13.9-25.1-5.4-8.2-10.1-15.6-10.3-16.4-.2-.9 1.5-2.6 4.8-4.5 10.3-6.1 16.7-15.7 19-28.6 3.9-22-10.6-43.4-32.6-47.9-6.4-1.3-55-2-60.6-.8m56.4 26.7c13.1 6.4 13.1 25.8 0 32.3-4.4 2.1-6.1 2.3-19.8 2.3h-15l-.3-17.5c-.1-9.6 0-18.1.3-18.8.4-1.2 3.2-1.4 15.3-1 12.8.3 15.3.7 19.5 2.7m88.5-27.1-28.7.2-2 2.7c-2.1 2.5-2.1 3.5-2.1 62.5v59.9l2.5 2.5 2.5 2.5 43.1-.3 43.1-.3 1.8-2.3c3.7-4.5 3.7-15.9 0-20.4-1.8-2.3-2-2.3-33.4-2.6l-31.6-.3V507h53.1l2.4-2.5c2.2-2.1 2.5-3.3 2.5-9.8 0-6.4-.3-7.6-2.3-9.5-2.2-2.1-3.2-2.2-28.7-2.4l-26.5-.3v-26.6l29.7.1c34 .1 35.1-.1 36.5-6.8 1.5-7.5.9-13.1-1.9-15.9-2.5-2.5-2.9-2.6-17-2.7-7.8 0-27.2 0-43 .2" />
+        <path class="intro-rec-dot" d="M773.5 435.7c-4 .4-10.8 2.4-11.9 3.5-.6.4-1.8.8-2.9.8-1 0-4.6 1.9-8 4.2-20.2 13.7-29.8 35-26.7 59 1.2 8.7 4.8 18.4 9.4 24.9 2.4 3.5 11.2 12.4 14.6 14.9 3.9 2.9 14.9 8 17.2 8 .8 0 1.9.5 2.6 1.2 2 2 21.7 1.3 29.7-1.2 19.8-6.1 35.8-22.6 41-42 1.9-7.2 1.9-21.7-.1-29.3-2.2-8.6-7.8-19.1-13.2-25-4.5-4.8-18.3-14.7-20.6-14.7-.6 0-2.3-.6-3.8-1.4-5-2.6-18.2-4-27.3-2.9" />
+      </svg>
+      <span class="intro-words" aria-hidden="true">
+        <span>REC...</span>
+        <span>RECONNECT</span>
+        <span>RECREATE</span>
+      </span>
+    </button>
+  </main>
+  <section id="password-screen" class="password-screen is-hidden" aria-labelledby="password-title">
+    <div class="password-panel">
+      <span class="brand password-brand" aria-label="REC"><img src="assets/brand/logo.svg" alt=""></span>
+      <h1 id="password-title">Ingresa la contraseña</h1>
+      <form id="password-form" class="password-form">
+        <label for="family-password">Contraseña</label>
+        <div class="password-row">
+          <div class="password-field">
+            <input id="family-password" type="password" autocomplete="current-password" aria-describedby="password-message" required>
+            <button id="password-toggle" class="password-toggle" type="button" aria-label="Mostrar contraseña" aria-pressed="false"><svg class="password-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-5.5 9.5-5.5 9.5 5.5 9.5 5.5-3.5 5.5-9.5 5.5S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.7"></circle></svg></button>
+          </div>
+          <button id="password-submit" type="submit">Entrar</button>
+        </div>
+      </form>
+      <p id="password-message" class="password-message" aria-live="polite"></p>
+      <button id="password-retry" class="secondary-button is-hidden" type="button">Ya tengo la contraseña</button>
+    </div>
+  </section>
+  <section id="catalog-screen" class="catalog-screen is-hidden">
+    <header class="site-header">
+      <div class="header-start">
+        <button id="menu-button" class="menu-button" type="button" aria-label="Abrir opciones" aria-expanded="false" aria-controls="help-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a class="brand" href="index.html?catalog=1" aria-label="Ir al catalogo"><img src="assets/brand/logo.svg" alt=""></a>
+        <nav class="main-nav" aria-label="Secciones de REC">
+          <a class="nav-link is-active" href="index.html?catalog=1&section=videos" data-section-link="videos">Videos</a>
+          <a class="nav-link" href="index.html?catalog=1&section=photos" data-section-link="photos">Fotos</a>
+          <a class="nav-link" href="index.html?catalog=1&section=audios" data-section-link="audios">Audios</a>
+          <a class="nav-link" href="index.html?catalog=1&section=documents" data-section-link="documents">Docs</a>
+        </nav>
+        <div id="help-menu" class="help-menu is-hidden">
+          <a href="index.html?catalog=1&section=videos" data-section-link="videos"><span class="help-menu-icon home-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4.5 11.2 12 5l7.5 6.2"/><path d="M7 10.5v8h10v-8"/><path d="M10 18.5v-5h4v5"/></svg></span>Volver al Inicio</a>
+          <a id="share-rec-link" href="https://api.whatsapp.com/send" target="_blank" rel="noopener"><span class="help-menu-icon share-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8.6 10.6 15.4 7M8.6 13.4l6.8 3.6"/><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="5.6" r="2.4"/><circle cx="18" cy="18.4" r="2.4"/></svg></span>Compartir recuerdos</a>
+          <a href="index.html?catalog=1&section=help" data-section-link="help"><span class="help-menu-icon" aria-hidden="true">?</span>Centro de Ayuda</a>
+        </div>
+      </div>
+      <form id="search-form" class="search-form" role="search">
+        <input id="search-input" type="search" placeholder="Buscar por titulo, lugar, personas o categoria" aria-label="Buscar contenido">
+      </form>
+    </header>
+    <section class="featured" aria-labelledby="featured-title">
+      <div class="featured-copy">
+        <h1 id="featured-title">El cajón de tus recuerdos</h1>
+      </div>
+    </section>
+    <section class="catalog-area" aria-labelledby="catalog-title">
+      <div class="section-heading">
+        <div><h2 id="catalog-title">Videos disponibles</h2></div>
+        <div class="sort-control" aria-label="Ordenar contenido">
+          <label id="carousel-switch" class="carousel-switch">Carruseles <button id="carousel-toggle" class="carousel-toggle" type="button" aria-label="Activar carruseles" aria-pressed="false"><span></span></button></label>
+          <label id="history-switch" class="carousel-switch history-switch">Historia <button id="history-toggle" class="carousel-toggle" type="button" aria-label="Mostrar historia" aria-pressed="false"><span></span></button></label>
+          <span class="sort-label">Ordenar</span>
+          <div class="sort-menu-wrap">
+            <button id="sort-menu-button" class="sort-menu-button" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="sort-menu-options">
+              <span id="sort-menu-label">A&ntilde;o</span>
+              <span class="sort-menu-caret" aria-hidden="true">▾</span>
+            </button>
+            <div id="sort-menu-options" class="sort-menu-options is-hidden" role="listbox" aria-label="Ordenar por">
+              <button type="button" role="option" aria-selected="true" data-sort-value="year">A&ntilde;o</button>
+              <button type="button" role="option" aria-selected="false" data-sort-value="category">Categor&iacute;a</button>
+              <button type="button" role="option" aria-selected="false" data-sort-value="title">T&iacute;tulo</button>
+              <button type="button" role="option" aria-selected="false" data-sort-value="duration">Duraci&oacute;n</button>
+            </div>
+          </div>
+          <button id="sort-direction" class="sort-direction" type="button" aria-label="Orden creciente" aria-pressed="false">&uarr;</button>
+        </div>
+        <p id="results-count" class="results-count"></p>
+      </div>
+      <div id="history-panel" class="history-panel is-hidden" aria-label="Linea de tiempo de videos">
+        <div id="history-current-year" class="history-current-year" aria-live="polite"></div>
+        <div id="history-track" class="history-track"></div>
+        <p id="history-results-count" class="history-results-count"></p>
+      </div>
+      <div id="movie-grid" class="movie-grid" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state is-hidden"><h3>No se encontraron resultados</h3><p>Proba con otro titulo, lugar, persona, categoria o palabra de la descripcion.</p></div>
+    </section>
+    <section id="help-screen" class="help-screen is-hidden" aria-labelledby="help-title">
+      <article class="help-panel">
+        <h2 id="help-title">Centro de Ayuda</h2>
+        <p>Los videos de REC se encuentran protegidos mediante los permisos de Google Drive.</p>
+        <p>Si el video no se reproduce o aparece un mensaje indicando que no tenes acceso, significa que tu cuenta de Google todavia no fue autorizada para visualizar la coleccion.</p>
+        <p>Cuando el administrador comparta la carpeta con tu cuenta de Google, automaticamente podras acceder a todos los videos disponibles sin necesidad de solicitar permisos nuevamente para cada uno.</p>
+      </article>
+    </section>
+    <div id="photo-viewer" class="photo-viewer is-hidden" role="dialog" aria-modal="true" aria-label="Vista ampliada de foto">
+      <button id="photo-viewer-close" class="photo-viewer-close" type="button" aria-label="Cerrar foto">&times;</button>
+      <iframe id="photo-viewer-frame" title="Foto seleccionada" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+  </section>
+</body>
+</html>

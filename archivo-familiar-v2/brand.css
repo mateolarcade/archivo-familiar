@@ -1,0 +1,313 @@
+.intro-logo {
+  place-items: center;
+  filter: drop-shadow(0 0 24px rgba(255, 27, 27, .32));
+}
+
+.intro-logo img {
+  width: clamp(190px, 34vw, 440px);
+  height: auto;
+  display: block;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  filter: drop-shadow(0 0 10px rgba(255, 27, 27, .22));
+}
+
+.brand img {
+  width: 86px;
+  height: auto;
+  display: block;
+}
+
+.password-brand img {
+  width: 112px;
+}
+
+.brand.small img {
+  width: 62px;
+}
+
+.skip-intro #intro-screen {
+  display: none !important;
+}
+
+.skip-intro #password-screen,
+.skip-intro #catalog-screen {
+  animation: none !important;
+}
+
+.site-header,
+.player-header {
+  gap: 12px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.site-header .brand img {
+  width: 60px;
+}
+
+.player-header .brand img {
+  width: 44px;
+}
+
+.featured {
+  min-height: 120px !important;
+  padding-top: 18px !important;
+  padding-bottom: 16px !important;
+}
+
+.featured h1 {
+  font-size: clamp(1.7rem, 4.6vw, 3.5rem) !important;
+}
+
+.catalog-area {
+  padding-top: 12px !important;
+}
+
+.section-heading {
+  margin-bottom: 12px !important;
+}
+
+.player-content {
+  padding-top: 18px !important;
+}
+
+.detail-panel {
+  padding-top: 0 !important;
+}
+
+@media (max-width: 760px) {
+  .site-header,
+  .player-header {
+    gap: 10px;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  .site-header .brand img {
+    width: 54px;
+  }
+
+  .player-header .brand img {
+    width: 42px;
+  }
+
+  .featured {
+    padding-top: 18px !important;
+    padding-bottom: 16px !important;
+  }
+
+  .catalog-area {
+    padding-top: 12px !important;
+  }
+
+  .detail-layout {
+    padding-top: 28px !important;
+  }
+}
+
+.intro-sequence-logo {
+  border: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent !important;
+  cursor: pointer;
+  animation: none;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.intro-sequence-logo:hover,
+.intro-sequence-logo:active,
+.intro-sequence-logo:focus,
+.intro-sequence-logo:focus-visible,
+.intro-sequence-logo:disabled,
+.intro-screen .intro-sequence-logo:hover,
+.intro-screen .intro-sequence-logo:active,
+.intro-screen .intro-sequence-logo:focus,
+.intro-screen .intro-sequence-logo:focus-visible,
+.intro-screen .intro-sequence-logo:disabled {
+  color: inherit;
+  background: transparent !important;
+  box-shadow: none;
+  transform: none;
+}
+
+.intro-sequence-logo:focus-visible {
+  outline: none;
+}
+
+.intro-screen.is-running .intro-sequence-logo {
+  cursor: default;
+  animation: introSequenceFade 6s linear forwards;
+}
+
+.intro-rec-mark {
+  width: clamp(220px, 38vw, 500px);
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.intro-logo .intro-start-label {
+  display: block;
+  margin-top: 22px;
+  color: #dfe3ec;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: none;
+  transform: none;
+}
+
+@media (max-width: 760px) {
+  .intro-logo .intro-start-label {
+    margin-top: 18px;
+    font-size: .9rem;
+  }
+}
+
+.intro-screen.is-running .intro-logo .intro-start-label {
+  display: none;
+}
+
+.intro-words {
+  display: grid;
+  gap: 4px;
+  margin-top: -44px;
+  color: #fff;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 2.15vw, 2rem);
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: none;
+  transform: none;
+}
+
+@media (max-width: 760px) {
+  .intro-words {
+    font-size: clamp(.5rem, 1.08vw, 1rem);
+  }
+}
+
+.intro-logo .intro-words,
+.intro-logo .intro-words span {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-transform: none;
+  transform: none;
+}
+
+.intro-logo .intro-words span {
+  display: block;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.intro-screen.is-running .intro-words span:nth-child(1) {
+  animation: introWordReveal 6s ease-out .8s forwards;
+}
+
+.intro-screen.is-running .intro-words span:nth-child(2) {
+  animation: introWordReveal 6s ease-out 2.05s forwards;
+}
+
+.intro-screen.is-running .intro-words span:nth-child(3) {
+  animation: introWordReveal 1s ease-out 3s forwards;
+}
+
+.intro-rec-text {
+  fill: #fff;
+  opacity: 1;
+  animation: none;
+}
+
+.intro-rec-ring-fill {
+  fill: #fff;
+  opacity: 0;
+  animation: none;
+}
+
+.intro-rec-ring-stroke {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 56;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: none;
+}
+
+.intro-rec-dot {
+  fill: red;
+  opacity: 0;
+  animation: none;
+}
+
+.intro-screen.is-running .intro-rec-text {
+  animation: introTextPower 6s linear forwards;
+}
+
+.intro-screen.is-running .intro-rec-ring-fill {
+  animation: introRingFill 6s linear forwards;
+}
+
+.intro-screen.is-running .intro-rec-ring-stroke {
+  animation: introRingDraw 4s linear forwards;
+}
+
+.intro-screen.is-running .intro-rec-dot {
+  animation: introDotRecord 6s linear forwards;
+}
+
+@keyframes introTextPower {
+  0% { opacity: 0; filter: blur(4px); transform: scale(.98); }
+  16.667% { opacity: 1; filter: blur(0); transform: scale(1); }
+  100% { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
+@keyframes introRingDraw {
+  0%, 16.667% { stroke-dashoffset: 1000; }
+  83.333% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes introRingFill {
+  0%, 82% { opacity: 0; }
+  83.333%, 100% { opacity: 1; }
+}
+
+@keyframes introDotRecord {
+  0%, 16.667% { opacity: 0; }
+  18%, 24% { opacity: 1; }
+  25%, 31% { opacity: 0; }
+  32%, 38% { opacity: 1; }
+  39%, 45% { opacity: 0; }
+  46%, 52% { opacity: 1; }
+  53%, 59% { opacity: 0; }
+  60%, 66% { opacity: 1; }
+  67%, 73% { opacity: 0; }
+  74%, 82% { opacity: 1; }
+  83.333%, 100% { opacity: 1; }
+}
+
+@keyframes introSequenceFade {
+  0%, 66.667% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.04); }
+}
+
+@keyframes introWordReveal {
+  0% { opacity: 0; transform: translateY(8px); }
+  18%, 100% { opacity: .82; transform: translateY(0); }
+}

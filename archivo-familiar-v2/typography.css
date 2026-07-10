@@ -1,0 +1,114 @@
+body,
+button,
+input,
+a,
+select,
+textarea,
+.nav-link,
+.sort-control,
+.sort-menu-button,
+.sort-menu-options button,
+.password-panel,
+.player-shell {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+.featured h1,
+.section-heading h2,
+.password-panel h1,
+.detail-panel h1,
+.not-found h1,
+.empty-state h3,
+.help-panel h2 {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+}
+
+.nav-link,
+.search-form button,
+.play-badge,
+.primary-link,
+.password-row button,
+.sort-label,
+.sort-menu-button,
+.sort-menu-options button,
+.results-count,
+.back-link,
+.detail-meta-grid strong,
+.detail-meta-grid span,
+.people-block span,
+.access-card h2 {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 800;
+}
+
+body {
+  font-weight: 500;
+}
+
+.featured h1 {
+  font-size: clamp(2rem, 5.2vw, 4.55rem) !important;
+  line-height: .96;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.65rem, 3.4vw, 2.45rem) !important;
+  line-height: 1.04;
+}
+
+.password-panel h1,
+.detail-panel h1,
+.help-panel h2 {
+  line-height: 1.02;
+}
+
+.nav-link,
+.search-form input,
+.search-form button,
+.sort-control,
+.results-count {
+  font-size: .94rem;
+}
+
+.play-badge,
+.media-open-link,
+.movie-title-row span,
+.meta-row span,
+.detail-meta-grid span,
+.people-block span,
+.sort-label {
+  font-size: .72rem;
+}
+
+.movie-title-row h3,
+.media-row-info h3,
+.media-row-copy h3 {
+  font-size: 1rem;
+}
+
+.movie-info p,
+.media-row-copy p,
+.detail-description,
+.access-card p,
+.help-panel p,
+.password-message {
+  font-size: .94rem;
+}
+
+@media (max-width: 760px) {
+  .featured h1 {
+    font-size: clamp(1.8rem, 8vw, 2.75rem) !important;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.55rem, 7vw, 2.2rem) !important;
+  }
+
+  .nav-link,
+  .search-form input,
+  .search-form button,
+  .sort-control,
+  .results-count {
+    font-size: .88rem;
+  }
+}
