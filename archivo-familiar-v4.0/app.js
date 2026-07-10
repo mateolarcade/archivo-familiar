@@ -22,6 +22,7 @@
   const sortMenuOptions = document.getElementById("sort-menu-options");
   const sortOptionButtons = Array.from(document.querySelectorAll("[data-sort-value]"));
   const sortDirectionButton = document.getElementById("sort-direction");
+  const carouselToggle = document.getElementById("carousel-toggle");
   const catalogTitle = document.getElementById("catalog-title");
   const catalogArea = document.querySelector(".catalog-area");
   const featuredSection = document.querySelector(".featured");
@@ -45,6 +46,7 @@
   };
   const sortState = { key: "year", direction: "asc" };
   const sortLabels = { year: "Año", category: "Categoría", title: "Título", duration: "Duración" };
+  let isCarouselMode = false;
   let currentSection = getRequestedSection();
   let remainingPasswordAttempts = MAX_PASSWORD_ATTEMPTS;
   let introHasStarted = false;
@@ -218,6 +220,7 @@
     sectionLinks.forEach((link) => link.classList.toggle("is-active", link.dataset.sectionLink === currentSection));
     if (helpMenu) helpMenu.classList.add("is-hidden");
     if (menuButton) menuButton.setAttribute("aria-expanded", "false");
+    if (carouselToggle) carouselToggle.classList.toggle("is-hidden", isHelp);
     if (isHelp) {
       document.title = "REC | Centro de Ayuda";
       return;
@@ -225,10 +228,20 @@
     const section = sections[currentSection];
     document.title = "REC | " + section.title;
     catalogTitle.textContent = section.title;
+    if (carouselToggle) carouselToggle.classList.toggle("is-hidden", section !== sections.videos);
+    if (section !== sections.videos) setCarouselMode(false);
     renderItems(getVisibleItems(section), section);
   }
   function renderItems(list, section) {
     movieGrid.innerHTML = "";
+    if (section === sections.videos && isCarouselMode) {
+      movieGrid.className = "decade-carousels";
+      renderDecadeCarousels(list, section);
+      emptyState.classList.toggle("is-hidden", list.length > 0);
+      emptyState.querySelector("h3").textContent = section.empty;
+      resultsCount.textContent = list.length === 1 ? "1 resultado" : list.length + " resultados";
+      return;
+    }
     movieGrid.className = getGridClassName(section);
     const fragment = document.createDocumentFragment();
     list.forEach((item) => {
@@ -263,6 +276,43 @@
     card.className = "movie-card";
     card.innerHTML = "<a class=\"poster-link\" href=\"" + escapeAttribute(href) + "\" aria-label=\"" + escapeAttribute(section.linkLabel + item.title) + "\">" + imageMarkup + "<span class=\"poster-play-icon\" aria-hidden=\"true\">&#9658;</span><span class=\"play-badge\">" + escapeHtml(section.badge) + "</span></a><div class=\"movie-info\"><div class=\"movie-title-row\"><h3>" + escapeHtml(item.title) + "</h3><span>" + escapeHtml(item.rating || "ATP") + "</span></div><p>" + escapeHtml(item.description) + "</p><div class=\"meta-row\"><span>" + escapeHtml(category) + "</span><span>" + escapeHtml(item.duration || item.format || "") + "</span><span>" + escapeHtml(item.year || "") + "</span></div></div>";
     return card;
+  }
+  function renderDecadeCarousels(list, section) {
+    const groups = getDecadeGroups(list);
+    const fragment = document.createDocumentFragment();
+    groups.forEach((group) => {
+      const carousel = document.createElement("section");
+      carousel.className = "decade-carousel";
+      carousel.innerHTML = "<h3>" + escapeHtml(group.label) + "</h3><div class=\"decade-track\"></div>";
+      const track = carousel.querySelector(".decade-track");
+      group.items.forEach((item) => track.appendChild(createVideoCard(item, section)));
+      fragment.appendChild(carousel);
+    });
+    movieGrid.appendChild(fragment);
+  }
+  function getDecadeGroups(list) {
+    const groupsByLabel = new Map();
+    list.forEach((item) => {
+      const year = getSortableNumber(item.year);
+      if (Number.isNaN(year)) return;
+      const label = getDecadeLabel(year);
+      if (!groupsByLabel.has(label)) groupsByLabel.set(label, []);
+      groupsByLabel.get(label).push(item);
+    });
+    return Array.from(groupsByLabel.entries()).map(([label, items]) => ({ label, items })).sort((firstGroup, secondGroup) => getDecadeSortValue(firstGroup.label) - getDecadeSortValue(secondGroup.label));
+  }
+  function getDecadeLabel(year) {
+    if (year >= 2010) return "+2010";
+    const decade = Math.floor(year / 10) * 10;
+    if (decade === 2000) return "Los 2000";
+    const decadeText = String(decade).slice(-2);
+    return "Los " + decadeText;
+  }
+  function getDecadeSortValue(label) {
+    if (label === "+2010") return 2010;
+    if (label === "Los 2000") return 2000;
+    const number = Number.parseInt(label.replace(/\D/g, ""), 10);
+    return Number.isNaN(number) ? Number.MAX_SAFE_INTEGER : number >= 80 ? 1900 + number : 2000 + number;
   }
   function createPhotoCard(item) {
     const card = document.createElement("article");
@@ -346,6 +396,10 @@
       button.setAttribute("aria-selected", String(button.dataset.sortValue === sortState.key));
     });
   }
+  function setCarouselMode(shouldUseCarousels) {
+    isCarouselMode = shouldUseCarousels;
+    if (carouselToggle) carouselToggle.setAttribute("aria-pressed", String(isCarouselMode));
+  }
   function escapeHtml(value) { return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
   function escapeAttribute(value) { return escapeHtml(value).replaceAll("\x60", "&#096;"); }
   if (searchForm) searchForm.addEventListener("submit", handleSearch);
@@ -369,6 +423,12 @@
     sortState.direction = sortState.direction === "asc" ? "desc" : "asc";
     updateSortDirectionButton();
     const section = sections[currentSection] || sections.videos;
+    renderItems(getVisibleItems(section), section);
+  });
+  if (carouselToggle) carouselToggle.addEventListener("click", () => {
+    const section = sections[currentSection] || sections.videos;
+    if (section !== sections.videos) return;
+    setCarouselMode(!isCarouselMode);
     renderItems(getVisibleItems(section), section);
   });
   if (menuButton && helpMenu) menuButton.addEventListener("click", () => {

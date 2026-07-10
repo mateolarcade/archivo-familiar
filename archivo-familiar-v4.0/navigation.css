@@ -320,6 +320,52 @@
   white-space: nowrap;
 }
 
+.carousel-toggle {
+  min-height: 32px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0 12px;
+  color: #dfe3ec;
+  font-size: .82rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, .08);
+}
+
+.carousel-toggle:hover,
+.carousel-toggle[aria-pressed="true"] {
+  color: #fff;
+  background: rgba(229, 9, 20, .9);
+  transform: none;
+}
+
+.decade-carousels {
+  display: grid;
+  gap: 30px;
+}
+
+.decade-carousel {
+  min-width: 0;
+}
+
+.decade-carousel h3 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+  line-height: 1;
+  font-weight: 900;
+}
+
+.decade-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(190px, 220px);
+  gap: 22px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 2px 2px 16px;
+  scrollbar-color: rgba(255, 255, 255, .25) transparent;
+}
+
 .section-heading,
 .catalog-area {
   overflow: visible;
