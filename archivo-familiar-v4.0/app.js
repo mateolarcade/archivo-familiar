@@ -22,7 +22,12 @@
   const sortMenuOptions = document.getElementById("sort-menu-options");
   const sortOptionButtons = Array.from(document.querySelectorAll("[data-sort-value]"));
   const sortDirectionButton = document.getElementById("sort-direction");
+  const carouselSwitch = document.getElementById("carousel-switch");
   const carouselToggle = document.getElementById("carousel-toggle");
+  const historySwitch = document.getElementById("history-switch");
+  const historyToggle = document.getElementById("history-toggle");
+  const historyPanel = document.getElementById("history-panel");
+  const historyTrack = document.getElementById("history-track");
   const catalogTitle = document.getElementById("catalog-title");
   const catalogArea = document.querySelector(".catalog-area");
   const featuredSection = document.querySelector(".featured");
@@ -46,7 +51,10 @@
   };
   const sortState = { key: "year", direction: "asc" };
   const sortLabels = { year: "Año", category: "Categoría", title: "Título", duration: "Duración" };
+  const historyYears = getAvailableYears(sortedMovies);
   let isCarouselMode = false;
+  let isHistoryMode = false;
+  let selectedHistoryYear = historyYears[0] || null;
   let currentSection = getRequestedSection();
   let remainingPasswordAttempts = MAX_PASSWORD_ATTEMPTS;
   let introHasStarted = false;
@@ -220,7 +228,9 @@
     sectionLinks.forEach((link) => link.classList.toggle("is-active", link.dataset.sectionLink === currentSection));
     if (helpMenu) helpMenu.classList.add("is-hidden");
     if (menuButton) menuButton.setAttribute("aria-expanded", "false");
-    if (carouselToggle) carouselToggle.classList.toggle("is-hidden", isHelp);
+    if (carouselSwitch) carouselSwitch.classList.toggle("is-hidden", isHelp);
+    if (historySwitch) historySwitch.classList.toggle("is-hidden", isHelp);
+    if (historyPanel) historyPanel.classList.add("is-hidden");
     if (isHelp) {
       document.title = "REC | Centro de Ayuda";
       return;
@@ -228,8 +238,13 @@
     const section = sections[currentSection];
     document.title = "REC | " + section.title;
     catalogTitle.textContent = section.title;
-    if (carouselToggle) carouselToggle.classList.toggle("is-hidden", section !== sections.videos);
-    if (section !== sections.videos) setCarouselMode(false);
+    if (carouselSwitch) carouselSwitch.classList.toggle("is-hidden", section !== sections.videos);
+    if (historySwitch) historySwitch.classList.toggle("is-hidden", section !== sections.videos);
+    if (section !== sections.videos) {
+      setCarouselMode(false);
+      setHistoryMode(false);
+    }
+    updateHistoryPanel();
     renderItems(getVisibleItems(section), section);
   }
   function renderItems(list, section) {
@@ -318,6 +333,15 @@
     const number = Number.parseInt(label.replace(/\D/g, ""), 10);
     return Number.isNaN(number) ? Number.MAX_SAFE_INTEGER : number >= 80 ? 1900 + number : 2000 + number;
   }
+  function getAvailableYears(list) {
+    return Array.from(new Set(list.map((item) => getSortableNumber(item.year)).filter((year) => !Number.isNaN(year)))).sort((firstYear, secondYear) => firstYear - secondYear);
+  }
+  function getYearPosition(year) {
+    if (historyYears.length <= 1) return 50;
+    const minYear = historyYears[0];
+    const maxYear = historyYears[historyYears.length - 1];
+    return ((year - minYear) / (maxYear - minYear)) * 100;
+  }
   function createPhotoCard(item) {
     const card = document.createElement("article");
     card.className = "media-card photo-card";
@@ -357,7 +381,10 @@
   }
   function getVisibleItems(section) {
     const query = searchInput.value.trim().toLowerCase();
-    const visibleItems = query ? section.items.filter((item) => getItemSearchText(item).includes(query)) : section.items.slice();
+    let visibleItems = query ? section.items.filter((item) => getItemSearchText(item).includes(query)) : section.items.slice();
+    if (section === sections.videos && isHistoryMode && selectedHistoryYear !== null) {
+      visibleItems = visibleItems.filter((item) => getSortableNumber(item.year) === selectedHistoryYear);
+    }
     return visibleItems.sort(compareItemsBySortState);
   }
   function compareItemsBySortState(firstItem, secondItem) {
@@ -407,6 +434,49 @@
       carouselToggle.setAttribute("aria-label", isCarouselMode ? "Desactivar carruseles" : "Activar carruseles");
     }
   }
+  function setHistoryMode(shouldUseHistory) {
+    isHistoryMode = shouldUseHistory;
+    if (isHistoryMode && selectedHistoryYear === null) selectedHistoryYear = historyYears[0] || null;
+    if (historyToggle) {
+      historyToggle.setAttribute("aria-pressed", String(isHistoryMode));
+      historyToggle.setAttribute("aria-label", isHistoryMode ? "Ocultar historia" : "Mostrar historia");
+    }
+    updateHistoryPanel();
+  }
+  function updateHistoryPanel() {
+    const shouldShow = currentSection === "videos" && isHistoryMode && historyYears.length > 0;
+    if (historyPanel) historyPanel.classList.toggle("is-hidden", !shouldShow);
+    if (!shouldShow || !historyTrack) return;
+    historyTrack.innerHTML = "";
+    const ball = document.createElement("span");
+    ball.className = "history-ball";
+    ball.style.left = getYearPosition(selectedHistoryYear) + "%";
+    historyTrack.appendChild(ball);
+    historyYears.forEach((year) => {
+      const point = document.createElement("button");
+      point.className = "history-point";
+      point.type = "button";
+      point.style.left = getYearPosition(year) + "%";
+      point.setAttribute("aria-label", "Ver videos de " + year);
+      point.setAttribute("aria-pressed", String(year === selectedHistoryYear));
+      point.innerHTML = "<span></span><strong>" + year + "</strong>";
+      point.addEventListener("click", () => selectHistoryYear(year));
+      historyTrack.appendChild(point);
+    });
+  }
+  function selectHistoryYear(year) {
+    selectedHistoryYear = year;
+    updateHistoryPanel();
+    const section = sections[currentSection] || sections.videos;
+    renderItems(getVisibleItems(section), section);
+  }
+  function selectNearestHistoryYearFromEvent(event) {
+    if (!historyTrack || historyYears.length === 0) return;
+    const rect = historyTrack.getBoundingClientRect();
+    const percent = Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100));
+    const nearestYear = historyYears.reduce((nearest, year) => Math.abs(getYearPosition(year) - percent) < Math.abs(getYearPosition(nearest) - percent) ? year : nearest, historyYears[0]);
+    selectHistoryYear(nearestYear);
+  }
   function escapeHtml(value) { return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
   function escapeAttribute(value) { return escapeHtml(value).replaceAll("\x60", "&#096;"); }
   if (searchForm) searchForm.addEventListener("submit", handleSearch);
@@ -438,6 +508,22 @@
     setCarouselMode(!isCarouselMode);
     renderItems(getVisibleItems(section), section);
   });
+  if (historyToggle) historyToggle.addEventListener("click", () => {
+    const section = sections[currentSection] || sections.videos;
+    if (section !== sections.videos) return;
+    setHistoryMode(!isHistoryMode);
+    renderItems(getVisibleItems(section), section);
+  });
+  if (historyTrack) {
+    historyTrack.addEventListener("pointerdown", (event) => {
+      selectNearestHistoryYearFromEvent(event);
+      historyTrack.setPointerCapture(event.pointerId);
+    });
+    historyTrack.addEventListener("pointermove", (event) => {
+      if (event.buttons !== 1) return;
+      selectNearestHistoryYearFromEvent(event);
+    });
+  }
   if (menuButton && helpMenu) menuButton.addEventListener("click", () => {
     const isOpen = helpMenu.classList.toggle("is-hidden") === false;
     menuButton.setAttribute("aria-expanded", String(isOpen));

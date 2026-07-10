@@ -100,7 +100,8 @@
       <div class="section-heading">
         <div><h2 id="catalog-title">Videos disponibles</h2></div>
         <div class="sort-control" aria-label="Ordenar contenido">
-          <label class="carousel-switch">Carruseles <button id="carousel-toggle" class="carousel-toggle" type="button" aria-label="Activar carruseles" aria-pressed="false"><span></span></button></label>
+          <label id="carousel-switch" class="carousel-switch">Carruseles <button id="carousel-toggle" class="carousel-toggle" type="button" aria-label="Activar carruseles" aria-pressed="false"><span></span></button></label>
+          <label id="history-switch" class="carousel-switch history-switch">Historia <button id="history-toggle" class="carousel-toggle" type="button" aria-label="Mostrar historia" aria-pressed="false"><span></span></button></label>
           <span class="sort-label">Ordenar</span>
           <div class="sort-menu-wrap">
             <button id="sort-menu-button" class="sort-menu-button" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="sort-menu-options">
@@ -117,6 +118,9 @@
           <button id="sort-direction" class="sort-direction" type="button" aria-label="Orden creciente" aria-pressed="false">&uarr;</button>
         </div>
         <p id="results-count" class="results-count"></p>
+      </div>
+      <div id="history-panel" class="history-panel is-hidden" aria-label="Linea de tiempo de videos">
+        <div id="history-track" class="history-track"></div>
       </div>
       <div id="movie-grid" class="movie-grid" aria-live="polite"></div>
       <div id="empty-state" class="empty-state is-hidden"><h3>No se encontraron resultados</h3><p>Proba con otro titulo, lugar, persona, categoria o palabra de la descripcion.</p></div>
