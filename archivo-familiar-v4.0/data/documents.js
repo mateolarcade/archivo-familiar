@@ -1,7 +1,7 @@
 window.DOCUMENTS = [
   {
     id: "doc1",
-    title: "Arbol Genealógico Larcade",
+    title: "0. Arbol Genealógico Larcade",
     description: "Documento familiar disponible en REC.",
     category: "Documento",
     type: "Documento",
