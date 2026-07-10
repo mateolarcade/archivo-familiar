@@ -1,7 +1,7 @@
 window.DOCUMENTS = [
   {
     id: "doc1",
-    title: "doc1",
+    title: "Arbol Genealógico Larcade",
     description: "Documento familiar disponible en REC.",
     category: "Documento",
     type: "Documento",
@@ -11,7 +11,7 @@ window.DOCUMENTS = [
   },
   {
     id: "doc2",
-    title: "doc2",
+    title: "10. Acta de Matrimonio de Hipólito Larcade y Rosine Marie Baudé",
     description: "Documento familiar disponible en REC.",
     category: "Documento",
     type: "Documento",
@@ -21,7 +21,7 @@ window.DOCUMENTS = [
   },
   {
     id: "doc3",
-    title: "doc3",
+    title: "10- Acta de matrimonio Hipólito y Rosine Marie - Traducción oficial al español",
     description: "Documento familiar disponible en REC.",
     category: "Documento",
     type: "Documento",
@@ -31,22 +31,22 @@ window.DOCUMENTS = [
   },
   {
     id: "doc4",
-    title: "doc4",
-    description: "Documento familiar disponible en REC.",
-    category: "Documento",
-    type: "Documento",
-    format: "Google Drive",
-    rating: "ATP",
-    url: "https://drive.google.com/file/d/12KpnneTtbq95sMfcjWqryNzgBBkBlIU4/preview"
-  },
-  {
-    id: "doc5",
-    title: "doc5",
+    title: "15- Partida de Nacimiento de Roman Ernesto Larcade",
     description: "Documento familiar disponible en REC.",
     category: "Documento",
     type: "Documento",
     format: "Google Drive",
     rating: "ATP",
     url: "https://drive.google.com/file/d/1yd8-JfT5eg-FvoSORO9KDfsi_sih1RgD/preview"
+  },
+  {
+    id: "doc5",
+    title: "15- Partida de Nacimiento de Roman Ernesto Larcade - Traductor público",
+    description: "Documento familiar disponible en REC.",
+    category: "Documento",
+    type: "Documento",
+    format: "Google Drive",
+    rating: "ATP",
+    url: "https://drive.google.com/file/d/12KpnneTtbq95sMfcjWqryNzgBBkBlIU4/preview"
   }
 ];
