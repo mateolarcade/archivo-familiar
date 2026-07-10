@@ -21,7 +21,7 @@ window.DOCUMENTS = [
   },
   {
     id: "doc3",
-    title: "10. Acta de matrimonio Hipólito y Rosine Marie - Traducción oficial al español",
+    title: "10. Acta de matrimonio Hipólito Larcade y Rosine Marie Baudé - Traducción oficial al español",
     description: "Documento familiar disponible en REC.",
     category: "Documento",
     type: "Documento",
