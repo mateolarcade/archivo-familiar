@@ -549,6 +549,12 @@
     const isOpen = helpMenu.classList.toggle("is-hidden") === false;
     menuButton.setAttribute("aria-expanded", String(isOpen));
   });
+  document.addEventListener("click", (event) => {
+    if (!helpMenu || !menuButton || helpMenu.classList.contains("is-hidden")) return;
+    if (helpMenu.contains(event.target) || menuButton.contains(event.target)) return;
+    helpMenu.classList.add("is-hidden");
+    menuButton.setAttribute("aria-expanded", "false");
+  });
   sectionLinks.forEach((link) => link.addEventListener("click", (event) => {
     event.preventDefault();
     showSection(link.dataset.sectionLink);
