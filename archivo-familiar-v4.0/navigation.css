@@ -392,8 +392,8 @@
 }
 
 .carousel-video-card .play-badge {
-  right: auto;
-  left: 8px;
+  right: 8px;
+  left: auto;
   bottom: 8px;
   min-width: 0;
   border: 1px solid rgba(255, 255, 255, .18);
@@ -620,6 +620,14 @@
 
   .document-preview {
     height: 300px;
+  }
+
+  .carousel-video-card .play-badge {
+    display: block;
+    right: 6px;
+    bottom: 6px;
+    padding: 3px 5px;
+    font-size: .64rem;
   }
 
   .photo-preview,
