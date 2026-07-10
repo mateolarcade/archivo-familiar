@@ -268,7 +268,7 @@
   function createPhotoCard(item) {
     const card = document.createElement("article");
     card.className = "media-card photo-card";
-    card.innerHTML = "<button class=\"photo-open-button\" type=\"button\" aria-label=\"Abrir " + escapeAttribute(item.title) + "\"><span class=\"embedded-preview photo-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></span></button><a class=\"primary-link mobile-media-action\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Ver foto</a>";
+    card.innerHTML = "<button class=\"photo-open-button\" type=\"button\" aria-label=\"Abrir " + escapeAttribute(item.title) + "\"><span class=\"embedded-preview photo-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></span></button><div class=\"media-row-copy photo-copy\"><h3>" + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.description) + "</p><a class=\"primary-link mobile-media-action\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Ver foto</a></div>";
     card.querySelector(".photo-open-button").addEventListener("click", () => openPhotoViewer(item));
     return card;
   }
