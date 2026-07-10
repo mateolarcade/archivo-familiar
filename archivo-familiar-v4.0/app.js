@@ -218,6 +218,11 @@
     if (yearComparison !== 0) return yearComparison;
     return String(firstMovie.title || "").localeCompare(String(secondMovie.title || ""), "es", { sensitivity: "base" });
   }
+  function updateCatalogTitle(section) {
+    const title = section === sections.videos && isHistoryMode ? "Tu historia" : section.title;
+    document.title = "REC | " + title;
+    if (catalogTitle) catalogTitle.textContent = title;
+  }
   function showSection(sectionName) {
     currentSection = sectionName === "help" || sections[sectionName] ? sectionName : "videos";
     const isHelp = currentSection === "help";
@@ -237,14 +242,13 @@
       return;
     }
     const section = sections[currentSection];
-    document.title = "REC | " + section.title;
-    catalogTitle.textContent = section.title;
     if (carouselSwitch) carouselSwitch.classList.toggle("is-hidden", section !== sections.videos);
     if (historySwitch) historySwitch.classList.toggle("is-hidden", section !== sections.videos);
     if (section !== sections.videos) {
       setCarouselMode(false);
       setHistoryMode(false);
     }
+    updateCatalogTitle(section);
     updateHistoryPanel();
     renderItems(getVisibleItems(section), section);
   }
@@ -442,6 +446,8 @@
       historyToggle.setAttribute("aria-pressed", String(isHistoryMode));
       historyToggle.setAttribute("aria-label", isHistoryMode ? "Ocultar historia" : "Mostrar historia");
     }
+    const section = sections[currentSection] || sections.videos;
+    updateCatalogTitle(section);
     updateHistoryPanel();
   }
   function updateHistoryPanel() {
