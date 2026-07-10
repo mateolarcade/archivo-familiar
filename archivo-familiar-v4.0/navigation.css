@@ -626,8 +626,8 @@
     display: block;
     right: 6px;
     bottom: 6px;
-    padding: 3px 5px;
-    font-size: .64rem;
+    padding: 5px 8px;
+    font-size: 1.28rem;
   }
 
   .photo-preview,
