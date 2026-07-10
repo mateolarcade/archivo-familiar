@@ -107,6 +107,62 @@
   background: linear-gradient(135deg, #252936, #090a0f);
 }
 
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sort-control select {
+  min-height: 34px;
+  border: 0;
+  border-radius: 0;
+  padding: 0 4px;
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: transparent;
+  outline: none;
+}
+
+.sort-control select option {
+  color: #050609;
+  background: #fff;
+}
+
+.sort-direction {
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  min-height: 34px;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1;
+  background: transparent;
+}
+
+.sort-direction:hover {
+  background: transparent;
+  transform: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 .help-screen {
   min-height: calc(100vh - 65px);
   display: grid;
@@ -152,5 +208,10 @@
     gap: 16px;
     overflow-x: auto;
     padding-top: 4px;
+  }
+
+  .sort-control {
+    width: 100%;
+    gap: 10px;
   }
 }

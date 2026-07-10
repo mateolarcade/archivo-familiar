@@ -89,7 +89,21 @@
       </div>
     </section>
     <section class="catalog-area" aria-labelledby="catalog-title">
-      <div class="section-heading"><div><h2 id="catalog-title">Videos disponibles</h2></div><p id="results-count" class="results-count"></p></div>
+      <div class="section-heading">
+        <div><h2 id="catalog-title">Videos disponibles</h2></div>
+        <div class="sort-control" aria-label="Ordenar contenido">
+          <span>Ordenado por:</span>
+          <label class="sr-only" for="sort-select">Ordenar por</label>
+          <select id="sort-select">
+            <option value="year">A&ntilde;o</option>
+            <option value="category">Categor&iacute;a</option>
+            <option value="title">T&iacute;tulo</option>
+            <option value="duration">Duraci&oacute;n</option>
+          </select>
+          <button id="sort-direction" class="sort-direction" type="button" aria-label="Orden creciente" aria-pressed="false">&uarr;</button>
+        </div>
+        <p id="results-count" class="results-count"></p>
+      </div>
       <div id="movie-grid" class="movie-grid" aria-live="polite"></div>
       <div id="empty-state" class="empty-state is-hidden"><h3>No se encontraron resultados</h3><p>Proba con otro titulo, lugar, persona, categoria o palabra de la descripcion.</p></div>
     </section>

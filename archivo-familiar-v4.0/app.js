@@ -17,6 +17,8 @@
   const movieGrid = document.getElementById("movie-grid");
   const emptyState = document.getElementById("empty-state");
   const resultsCount = document.getElementById("results-count");
+  const sortSelect = document.getElementById("sort-select");
+  const sortDirectionButton = document.getElementById("sort-direction");
   const catalogTitle = document.getElementById("catalog-title");
   const catalogArea = document.querySelector(".catalog-area");
   const featuredSection = document.querySelector(".featured");
@@ -35,6 +37,7 @@
     audios: { title: "Audios disponibles", empty: "No se encontraron audios", items: audios, badge: "Audio", linkLabel: "Escuchar audio " },
     documents: { title: "Documentos disponibles", empty: "No se encontraron documentos", items: documents, badge: "Documento", linkLabel: "Abrir documento " }
   };
+  const sortState = { key: "year", direction: "asc" };
   let currentSection = getRequestedSection();
   let remainingPasswordAttempts = MAX_PASSWORD_ATTEMPTS;
   let introHasStarted = false;
@@ -216,7 +219,7 @@
     const section = sections[currentSection];
     document.title = "REC | " + section.title;
     catalogTitle.textContent = section.title;
-    renderItems(section.items, section);
+    renderItems(getVisibleItems(section), section);
   }
   function renderItems(list, section) {
     movieGrid.innerHTML = "";
@@ -242,13 +245,58 @@
   function handleSearch(event) {
     event.preventDefault();
     const section = sections[currentSection] || sections.videos;
+    renderItems(getVisibleItems(section), section);
+  }
+  function getVisibleItems(section) {
     const query = searchInput.value.trim().toLowerCase();
-    renderItems(query ? section.items.filter((item) => getItemSearchText(item).includes(query)) : section.items, section);
+    const visibleItems = query ? section.items.filter((item) => getItemSearchText(item).includes(query)) : section.items.slice();
+    return visibleItems.sort(compareItemsBySortState);
+  }
+  function compareItemsBySortState(firstItem, secondItem) {
+    const direction = sortState.direction === "desc" ? -1 : 1;
+    let result = 0;
+    if (sortState.key === "year") {
+      result = compareNumbers(getSortableNumber(firstItem.year), getSortableNumber(secondItem.year));
+    } else if (sortState.key === "duration") {
+      result = compareNumbers(getSortableNumber(firstItem.duration || firstItem.format), getSortableNumber(secondItem.duration || secondItem.format));
+    } else {
+      result = String(firstItem[sortState.key] || "").localeCompare(String(secondItem[sortState.key] || ""), "es", { sensitivity: "base" });
+    }
+    if (result === 0) {
+      result = String(firstItem.title || "").localeCompare(String(secondItem.title || ""), "es", { sensitivity: "base" });
+    }
+    return result * direction;
+  }
+  function compareNumbers(firstNumber, secondNumber) {
+    const firstValue = Number.isNaN(firstNumber) ? Number.MAX_SAFE_INTEGER : firstNumber;
+    const secondValue = Number.isNaN(secondNumber) ? Number.MAX_SAFE_INTEGER : secondNumber;
+    return firstValue - secondValue;
+  }
+  function getSortableNumber(value) {
+    const match = String(value || "").match(/\d+/);
+    return match ? Number.parseInt(match[0], 10) : Number.NaN;
+  }
+  function updateSortDirectionButton() {
+    const isDescending = sortState.direction === "desc";
+    sortDirectionButton.textContent = isDescending ? "↓" : "↑";
+    sortDirectionButton.setAttribute("aria-label", isDescending ? "Orden decreciente" : "Orden creciente");
+    sortDirectionButton.setAttribute("aria-pressed", String(isDescending));
   }
   function escapeHtml(value) { return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
   function escapeAttribute(value) { return escapeHtml(value).replaceAll("\x60", "&#096;"); }
   if (searchForm) searchForm.addEventListener("submit", handleSearch);
   if (searchInput) searchInput.addEventListener("input", handleSearch);
+  if (sortSelect) sortSelect.addEventListener("change", () => {
+    sortState.key = sortSelect.value;
+    const section = sections[currentSection] || sections.videos;
+    renderItems(getVisibleItems(section), section);
+  });
+  if (sortDirectionButton) sortDirectionButton.addEventListener("click", () => {
+    sortState.direction = sortState.direction === "asc" ? "desc" : "asc";
+    updateSortDirectionButton();
+    const section = sections[currentSection] || sections.videos;
+    renderItems(getVisibleItems(section), section);
+  });
   if (menuButton && helpMenu) menuButton.addEventListener("click", () => {
     const isOpen = helpMenu.classList.toggle("is-hidden") === false;
     menuButton.setAttribute("aria-expanded", String(isOpen));
