@@ -8,7 +8,7 @@ window.PHOTOS = [
     format: "Google Drive",
     rating: "ATP",
     year: "2008",
-    poster: "foto-cumple-papa-2008.JPG",
+    poster: "assets/posters/foto-cumple-papa-2008.JPG",
     url: "https://drive.google.com/drive/folders/14DAsAoyQ-qsezNsdvsIa6R3P7MnHS-gK?usp=drive_link"
   },
   {
@@ -20,7 +20,7 @@ window.PHOTOS = [
     format: "Google Drive",
     rating: "ATP",
     year: "2008",
-    poster: "foto-cumple-papino-2008.JPG",
+    poster: "assets/posters/foto-cumple-papino-2008.JPG",
     url: "https://drive.google.com/drive/folders/1NgK5wwIZd6F8w0xffUZxK06tV3VmDZCb?usp=drive_link"
   },
   {
@@ -32,7 +32,7 @@ window.PHOTOS = [
     format: "Google Drive",
     rating: "ATP",
     year: "2013",
-    poster: "foto-egresados.JPG",
+    poster: "assets/posters/foto-egresados.JPG",
     url: "https://drive.google.com/drive/folders/1ZvIxUJxT1eebUJeAhNDe_9HUJwgjhmHS?usp=drive_link"
   }
 ];
