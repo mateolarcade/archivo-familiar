@@ -29,6 +29,9 @@
   const menuButton = document.getElementById("menu-button");
   const helpMenu = document.getElementById("help-menu");
   const sectionLinks = Array.from(document.querySelectorAll("[data-section-link]"));
+  const photoViewer = document.getElementById("photo-viewer");
+  const photoViewerFrame = document.getElementById("photo-viewer-frame");
+  const photoViewerClose = document.getElementById("photo-viewer-close");
   const movies = Array.isArray(window.MOVIES) ? window.MOVIES : [];
   const sortedMovies = movies.slice().sort(compareMovies);
   const photos = Array.isArray(window.PHOTOS) ? window.PHOTOS : [];
@@ -265,7 +268,8 @@
   function createPhotoCard(item) {
     const card = document.createElement("article");
     card.className = "media-card photo-card";
-    card.innerHTML = "<div class=\"embedded-preview photo-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></div><div class=\"media-row-info\"><h3>" + escapeHtml(item.title) + "</h3><a class=\"media-open-link\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Abrir foto</a></div>";
+    card.innerHTML = "<button class=\"photo-open-button\" type=\"button\" aria-label=\"Abrir " + escapeAttribute(item.title) + "\"><span class=\"embedded-preview photo-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></span></button>";
+    card.querySelector(".photo-open-button").addEventListener("click", () => openPhotoViewer(item));
     return card;
   }
   function createAudioRow(item) {
@@ -279,6 +283,19 @@
     row.className = "media-row document-row";
     row.innerHTML = "<div class=\"embedded-preview document-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></div><div class=\"media-row-copy\"><h3>" + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.description) + "</p><a class=\"media-open-link\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Abrir documento</a></div>";
     return row;
+  }
+  function openPhotoViewer(item) {
+    if (!photoViewer || !photoViewerFrame) return;
+    photoViewerFrame.src = item.url;
+    photoViewer.classList.remove("is-hidden");
+    document.body.classList.add("viewer-open");
+    if (photoViewerClose) photoViewerClose.focus();
+  }
+  function closePhotoViewer() {
+    if (!photoViewer || !photoViewerFrame) return;
+    photoViewer.classList.add("is-hidden");
+    photoViewerFrame.src = "";
+    document.body.classList.remove("viewer-open");
   }
   function handleSearch(event) {
     event.preventDefault();
@@ -365,6 +382,13 @@
     window.history.pushState({}, "", link.href);
   }));
   window.addEventListener("popstate", () => showSection(getRequestedSection()));
+  if (photoViewerClose) photoViewerClose.addEventListener("click", closePhotoViewer);
+  if (photoViewer) photoViewer.addEventListener("click", (event) => {
+    if (event.target === photoViewer) closePhotoViewer();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closePhotoViewer();
+  });
   if (passwordForm) passwordForm.addEventListener("submit", handlePasswordSubmit);
   if (passwordToggle && passwordInput) passwordToggle.addEventListener("click", () => {
     const shouldShow = passwordInput.type === "password";
