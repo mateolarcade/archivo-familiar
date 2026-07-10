@@ -94,7 +94,7 @@
   border-radius: 6px;
   padding: 0 10px;
   color: #dfe3ec;
-  font-family: Georgia, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   letter-spacing: 0;
   transition: color .16s ease, background .16s ease;
@@ -134,6 +134,7 @@
   padding: 3px 4px 3px 12px;
   color: #fff;
   background: rgba(255, 255, 255, .045);
+  font-family: Arial, Helvetica, sans-serif;
   white-space: nowrap;
 }
 
