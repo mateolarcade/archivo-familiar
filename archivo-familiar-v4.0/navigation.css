@@ -80,6 +80,37 @@
   font-weight: 900;
 }
 
+.share-menu-icon {
+  position: relative;
+}
+
+.share-menu-icon::before,
+.share-menu-icon::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.share-menu-icon::before {
+  width: 9px;
+  height: 9px;
+  top: 5px;
+  right: 5px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  background: transparent;
+}
+
+.share-menu-icon::after {
+  width: 11px;
+  height: 2px;
+  top: 12px;
+  left: 6px;
+  border-radius: 999px;
+  transform: rotate(-35deg);
+  transform-origin: right center;
+}
+
 .main-nav {
   display: flex;
   align-items: center;
