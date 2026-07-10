@@ -226,6 +226,10 @@
   overflow: hidden;
 }
 
+.mobile-media-action {
+  display: none;
+}
+
 .media-row-info,
 .media-row-copy {
   padding: 14px;
@@ -516,5 +520,37 @@
 
   .document-preview {
     height: 300px;
+  }
+
+  .photo-preview,
+  .audio-preview,
+  .document-preview {
+    display: none;
+  }
+
+  .photo-open-button {
+    display: none;
+  }
+
+  .mobile-media-action {
+    display: inline-flex;
+    width: 100%;
+    min-height: 52px;
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+
+  .photo-card {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .photo-card .mobile-media-action {
+    margin-top: 0;
+  }
+
+  .media-open-link {
+    display: none;
   }
 }

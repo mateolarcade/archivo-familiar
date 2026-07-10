@@ -268,20 +268,20 @@
   function createPhotoCard(item) {
     const card = document.createElement("article");
     card.className = "media-card photo-card";
-    card.innerHTML = "<button class=\"photo-open-button\" type=\"button\" aria-label=\"Abrir " + escapeAttribute(item.title) + "\"><span class=\"embedded-preview photo-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></span></button>";
+    card.innerHTML = "<button class=\"photo-open-button\" type=\"button\" aria-label=\"Abrir " + escapeAttribute(item.title) + "\"><span class=\"embedded-preview photo-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></span></button><a class=\"primary-link mobile-media-action\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Ver foto</a>";
     card.querySelector(".photo-open-button").addEventListener("click", () => openPhotoViewer(item));
     return card;
   }
   function createAudioRow(item) {
     const row = document.createElement("article");
     row.className = "media-row audio-row";
-    row.innerHTML = "<div class=\"media-row-copy\"><h3>" + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.description) + "</p></div><div class=\"embedded-preview audio-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay\"></iframe></div>";
+    row.innerHTML = "<div class=\"media-row-copy\"><h3>" + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.description) + "</p><a class=\"primary-link mobile-media-action\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Escuchar audio</a></div><div class=\"embedded-preview audio-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay\"></iframe></div>";
     return row;
   }
   function createDocumentRow(item) {
     const row = document.createElement("article");
     row.className = "media-row document-row";
-    row.innerHTML = "<div class=\"embedded-preview document-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></div><div class=\"media-row-copy\"><h3>" + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.description) + "</p><a class=\"media-open-link\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Abrir documento</a></div>";
+    row.innerHTML = "<div class=\"embedded-preview document-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></div><div class=\"media-row-copy\"><h3>" + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.description) + "</p><a class=\"media-open-link\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Abrir documento</a><a class=\"primary-link mobile-media-action\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Ver documento</a></div>";
     return row;
   }
   function openPhotoViewer(item) {
