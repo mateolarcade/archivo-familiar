@@ -268,13 +268,13 @@
     if (section === sections.documents) return createDocumentRow(item);
     return createVideoCard(item, section);
   }
-  function createVideoCard(item, section) {
+  function createVideoCard(item, section, posterOnly) {
     const category = item.category || item.type || section.badge + " REC";
     const href = getItemHref(item, section);
     const imageMarkup = item.poster || item.thumbnail ? "<img src=\"" + escapeAttribute(item.poster || item.thumbnail) + "\" alt=\"Portada de " + escapeAttribute(item.title) + "\" loading=\"lazy\">" : "<span class=\"poster-placeholder\">" + escapeHtml(section.badge) + "</span>";
     const card = document.createElement("article");
     card.className = "movie-card";
-    card.innerHTML = "<a class=\"poster-link\" href=\"" + escapeAttribute(href) + "\" aria-label=\"" + escapeAttribute(section.linkLabel + item.title) + "\">" + imageMarkup + "<span class=\"poster-play-icon\" aria-hidden=\"true\">&#9658;</span><span class=\"play-badge\">" + escapeHtml(section.badge) + "</span></a><div class=\"movie-info\"><div class=\"movie-title-row\"><h3>" + escapeHtml(item.title) + "</h3><span>" + escapeHtml(item.rating || "ATP") + "</span></div><p>" + escapeHtml(item.description) + "</p><div class=\"meta-row\"><span>" + escapeHtml(category) + "</span><span>" + escapeHtml(item.duration || item.format || "") + "</span><span>" + escapeHtml(item.year || "") + "</span></div></div>";
+    card.innerHTML = "<a class=\"poster-link\" href=\"" + escapeAttribute(href) + "\" aria-label=\"" + escapeAttribute(section.linkLabel + item.title) + "\">" + imageMarkup + "<span class=\"poster-play-icon\" aria-hidden=\"true\">&#9658;</span><span class=\"play-badge\">" + escapeHtml(section.badge) + "</span></a>" + (posterOnly ? "" : "<div class=\"movie-info\"><div class=\"movie-title-row\"><h3>" + escapeHtml(item.title) + "</h3><span>" + escapeHtml(item.rating || "ATP") + "</span></div><p>" + escapeHtml(item.description) + "</p><div class=\"meta-row\"><span>" + escapeHtml(category) + "</span><span>" + escapeHtml(item.duration || item.format || "") + "</span><span>" + escapeHtml(item.year || "") + "</span></div></div>");
     return card;
   }
   function renderDecadeCarousels(list, section) {
@@ -285,7 +285,7 @@
       carousel.className = "decade-carousel";
       carousel.innerHTML = "<h3>" + escapeHtml(group.label) + "</h3><div class=\"decade-track\"></div>";
       const track = carousel.querySelector(".decade-track");
-      group.items.forEach((item) => track.appendChild(createVideoCard(item, section)));
+      group.items.forEach((item) => track.appendChild(createVideoCard(item, section, true)));
       fragment.appendChild(carousel);
     });
     movieGrid.appendChild(fragment);
@@ -398,7 +398,10 @@
   }
   function setCarouselMode(shouldUseCarousels) {
     isCarouselMode = shouldUseCarousels;
-    if (carouselToggle) carouselToggle.setAttribute("aria-pressed", String(isCarouselMode));
+    if (carouselToggle) {
+      carouselToggle.setAttribute("aria-pressed", String(isCarouselMode));
+      carouselToggle.setAttribute("aria-label", isCarouselMode ? "Desactivar carruseles" : "Activar carruseles");
+    }
   }
   function escapeHtml(value) { return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
   function escapeAttribute(value) { return escapeHtml(value).replaceAll("\x60", "&#096;"); }

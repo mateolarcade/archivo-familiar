@@ -320,22 +320,47 @@
   white-space: nowrap;
 }
 
+.carousel-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .carousel-toggle {
-  min-height: 32px;
+  position: relative;
+  width: 46px;
+  min-width: 46px;
+  height: 26px;
+  min-height: 26px;
   border: 0;
   border-radius: 999px;
-  padding: 0 12px;
-  color: #dfe3ec;
-  font-size: .82rem;
-  font-weight: 800;
-  background: rgba(255, 255, 255, .08);
+  padding: 0;
+  background: rgba(255, 255, 255, .16);
+}
+
+.carousel-toggle span {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform .18s ease;
 }
 
 .carousel-toggle:hover,
 .carousel-toggle[aria-pressed="true"] {
-  color: #fff;
   background: rgba(229, 9, 20, .9);
   transform: none;
+}
+
+.carousel-toggle[aria-pressed="true"] span {
+  transform: translateX(20px);
 }
 
 .decade-carousels {
@@ -353,6 +378,11 @@
   font-size: clamp(1.25rem, 2.4vw, 1.9rem);
   line-height: 1;
   font-weight: 900;
+}
+
+.decade-carousel h3::before {
+  content: "---";
+  margin-right: 4px;
 }
 
 .decade-track {
