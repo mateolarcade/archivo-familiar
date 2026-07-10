@@ -264,7 +264,7 @@
 }
 
 .intro-screen.is-running .intro-rec-ring-stroke {
-  animation: introRingDraw 6s linear forwards;
+  animation: introRingDraw 3s linear forwards;
 }
 
 .intro-screen.is-running .intro-rec-dot {
