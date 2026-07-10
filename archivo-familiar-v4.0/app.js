@@ -223,7 +223,10 @@
     const title = section === sections.videos && isHistoryMode ? "Tu historia" : section.title;
     document.title = "REC | " + title;
     if (catalogTitle) catalogTitle.textContent = title;
-    if (catalogArea) catalogArea.classList.toggle("is-history-mode", section === sections.videos && isHistoryMode);
+    if (catalogArea) {
+      catalogArea.classList.toggle("is-history-mode", section === sections.videos && isHistoryMode);
+      catalogArea.classList.toggle("is-carousel-mode", section === sections.videos && isCarouselMode);
+    }
   }
   function updateResultsCount(total) {
     const text = total === 1 ? "1 resultado" : total + " resultados";
@@ -445,6 +448,8 @@
       carouselToggle.setAttribute("aria-pressed", String(isCarouselMode));
       carouselToggle.setAttribute("aria-label", isCarouselMode ? "Desactivar carruseles" : "Activar carruseles");
     }
+    const section = sections[currentSection] || sections.videos;
+    updateCatalogTitle(section);
   }
   function setHistoryMode(shouldUseHistory) {
     isHistoryMode = shouldUseHistory;

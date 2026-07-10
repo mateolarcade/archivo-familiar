@@ -521,6 +521,10 @@
   min-width: 0;
 }
 
+.catalog-area.is-carousel-mode .section-heading > div:first-child {
+  display: none;
+}
+
 .section-heading .results-count {
   margin: 0;
 }
