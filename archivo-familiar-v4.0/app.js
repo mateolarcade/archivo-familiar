@@ -184,7 +184,6 @@
     introHasStarted = true;
     introScreen.classList.add("is-running");
     if (introStartButton) introStartButton.disabled = true;
-    playIntroSequenceSound();
     window.setTimeout(() => {
       if (hasFamilyAccess()) {
         showCatalog();
@@ -403,5 +402,5 @@
     else showPasswordScreen();
     return;
   }
-  if (introStartButton) introStartButton.addEventListener("click", startExperience);
+  window.setTimeout(startExperience, 300);
 })();

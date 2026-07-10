@@ -178,6 +178,38 @@
   display: none;
 }
 
+.intro-words {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+  color: #fff;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 2.4vw, 1.55rem);
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+  transform: none;
+}
+
+.intro-words span {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.intro-screen.is-running .intro-words span:nth-child(1) {
+  animation: introWordReveal 6s linear forwards;
+}
+
+.intro-screen.is-running .intro-words span:nth-child(2) {
+  animation: introWordReveal 6s linear .95s forwards;
+}
+
+.intro-screen.is-running .intro-words span:nth-child(3) {
+  animation: introWordReveal 6s linear 1.9s forwards;
+}
+
 .intro-rec-text {
   fill: #fff;
   opacity: 1;
@@ -257,4 +289,9 @@
 @keyframes introSequenceFade {
   0%, 66.667% { opacity: 1; transform: scale(1); }
   100% { opacity: 0; transform: scale(1.04); }
+}
+
+@keyframes introWordReveal {
+  0% { opacity: 0; transform: translateY(8px); }
+  12%, 100% { opacity: 1; transform: translateY(0); }
 }
