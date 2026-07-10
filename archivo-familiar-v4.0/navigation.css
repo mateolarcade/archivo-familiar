@@ -124,6 +124,7 @@
 }
 
 .sort-control {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -134,6 +135,16 @@
   color: #fff;
   background: rgba(255, 255, 255, .045);
   white-space: nowrap;
+}
+
+.section-heading,
+.catalog-area {
+  overflow: visible;
+}
+
+.section-heading {
+  position: relative;
+  z-index: 6;
 }
 
 .sort-label {
@@ -174,13 +185,19 @@
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
-  z-index: 20;
+  z-index: 30;
+  display: grid;
+  gap: 2px;
   min-width: 148px;
   padding: 6px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(12, 14, 19, .98);
   box-shadow: var(--shadow);
+}
+
+.sort-menu-options.is-hidden {
+  display: none;
 }
 
 .sort-menu-options button {
