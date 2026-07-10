@@ -380,11 +380,6 @@
   font-weight: 900;
 }
 
-.decade-carousel h3::before {
-  content: "---";
-  margin-right: 4px;
-}
-
 .decade-track {
   display: grid;
   grid-auto-flow: column;
