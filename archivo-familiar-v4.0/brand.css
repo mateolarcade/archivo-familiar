@@ -184,7 +184,7 @@
   margin-top: 16px;
   color: #fff;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size: clamp(.042rem, .072vw, .06rem);
+  font-size: clamp(1rem, 2.15vw, 2rem);
   font-weight: 700;
   letter-spacing: .08em;
   line-height: 1.15;
@@ -195,11 +195,21 @@
 
 @media (max-width: 760px) {
   .intro-words {
-    font-size: clamp(.21rem, .36vw, .3rem);
+    font-size: clamp(.5rem, 1.08vw, 1rem);
   }
 }
 
-.intro-words span {
+.intro-logo .intro-words,
+.intro-logo .intro-words span {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-transform: none;
+  transform: none;
+}
+
+.intro-logo .intro-words span {
+  display: block;
   opacity: 0;
   transform: translateY(8px);
 }
