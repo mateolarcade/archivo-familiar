@@ -1,5 +1,6 @@
 .header-start {
   position: relative;
+  z-index: 80;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -46,6 +47,7 @@
   position: absolute;
   left: 0;
   top: calc(100% + 12px);
+  z-index: 1000;
   width: max-content;
   min-width: 210px;
   padding: 8px;
@@ -82,6 +84,10 @@
 
 .share-menu-icon {
   position: relative;
+  background:
+    radial-gradient(circle at 7px 12px, currentColor 0 2px, transparent 2.5px),
+    radial-gradient(circle at 16px 7px, currentColor 0 2px, transparent 2.5px),
+    radial-gradient(circle at 16px 17px, currentColor 0 2px, transparent 2.5px);
 }
 
 .share-menu-icon::before,
@@ -92,23 +98,23 @@
 }
 
 .share-menu-icon::before {
-  width: 9px;
-  height: 9px;
-  top: 5px;
-  right: 5px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  background: transparent;
+  width: 10px;
+  height: 2px;
+  top: 10px;
+  left: 8px;
+  border-radius: 999px;
+  transform: rotate(-29deg);
+  transform-origin: left center;
 }
 
 .share-menu-icon::after {
-  width: 11px;
+  width: 10px;
   height: 2px;
-  top: 12px;
-  left: 6px;
+  top: 14px;
+  left: 8px;
   border-radius: 999px;
-  transform: rotate(-35deg);
-  transform-origin: right center;
+  transform: rotate(29deg);
+  transform-origin: left center;
 }
 
 .main-nav {
