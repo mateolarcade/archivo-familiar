@@ -144,8 +144,21 @@
 }
 
 .section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  justify-content: initial;
+  column-gap: 22px;
   position: relative;
   z-index: 6;
+}
+
+.section-heading > div:first-child {
+  min-width: 0;
+}
+
+.section-heading .results-count {
+  margin: 0;
 }
 
 .sort-label {
@@ -302,5 +315,11 @@
   .sort-control {
     width: max-content;
     gap: 10px;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
