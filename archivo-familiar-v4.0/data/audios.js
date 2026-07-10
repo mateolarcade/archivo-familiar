@@ -1,7 +1,7 @@
 window.AUDIOS = [
   {
     id: "audio1",
-    title: "audio1",
+    title: "BOOOEE",
     description: "Audio familiar disponible en REC.",
     category: "Audio",
     type: "Audio",
@@ -11,7 +11,7 @@ window.AUDIOS = [
   },
   {
     id: "audio2",
-    title: "audio2",
+    title: "Paraaa",
     description: "Audio familiar disponible en REC.",
     category: "Audio",
     type: "Audio",
@@ -21,7 +21,7 @@ window.AUDIOS = [
   },
   {
     id: "audio3",
-    title: "audio3",
+    title: "Mamaaa",
     description: "Audio familiar disponible en REC.",
     category: "Audio",
     type: "Audio",
@@ -31,7 +31,7 @@ window.AUDIOS = [
   },
   {
     id: "audio4",
-    title: "audio4",
+    title: "Maiameee",
     description: "Audio familiar disponible en REC.",
     category: "Audio",
     type: "Audio",
