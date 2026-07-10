@@ -82,39 +82,14 @@
   font-weight: 900;
 }
 
-.share-menu-icon {
-  position: relative;
-  background:
-    radial-gradient(circle at 7px 12px, currentColor 0 2px, transparent 2.5px),
-    radial-gradient(circle at 16px 7px, currentColor 0 2px, transparent 2.5px),
-    radial-gradient(circle at 16px 17px, currentColor 0 2px, transparent 2.5px);
-}
-
-.share-menu-icon::before,
-.share-menu-icon::after {
-  content: "";
-  position: absolute;
-  background: currentColor;
-}
-
-.share-menu-icon::before {
-  width: 10px;
-  height: 2px;
-  top: 10px;
-  left: 8px;
-  border-radius: 999px;
-  transform: rotate(-29deg);
-  transform-origin: left center;
-}
-
-.share-menu-icon::after {
-  width: 10px;
-  height: 2px;
-  top: 14px;
-  left: 8px;
-  border-radius: 999px;
-  transform: rotate(29deg);
-  transform-origin: left center;
+.share-menu-icon svg {
+  width: 17px;
+  height: 17px;
+  overflow: visible;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 
 .main-nav {
