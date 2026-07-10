@@ -93,13 +93,18 @@
         <div><h2 id="catalog-title">Videos disponibles</h2></div>
         <div class="sort-control" aria-label="Ordenar contenido">
           <span class="sort-label">Ordenar</span>
-          <label class="sr-only" for="sort-select">Ordenar por</label>
-          <select id="sort-select">
-            <option value="year">A&ntilde;o</option>
-            <option value="category">Categor&iacute;a</option>
-            <option value="title">T&iacute;tulo</option>
-            <option value="duration">Duraci&oacute;n</option>
-          </select>
+          <div class="sort-menu-wrap">
+            <button id="sort-menu-button" class="sort-menu-button" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="sort-menu-options">
+              <span id="sort-menu-label">A&ntilde;o</span>
+              <span class="sort-menu-caret" aria-hidden="true">▾</span>
+            </button>
+            <div id="sort-menu-options" class="sort-menu-options is-hidden" role="listbox" aria-label="Ordenar por">
+              <button type="button" role="option" aria-selected="true" data-sort-value="year">A&ntilde;o</button>
+              <button type="button" role="option" aria-selected="false" data-sort-value="category">Categor&iacute;a</button>
+              <button type="button" role="option" aria-selected="false" data-sort-value="title">T&iacute;tulo</button>
+              <button type="button" role="option" aria-selected="false" data-sort-value="duration">Duraci&oacute;n</button>
+            </div>
+          </div>
           <button id="sort-direction" class="sort-direction" type="button" aria-label="Orden creciente" aria-pressed="false">&uarr;</button>
         </div>
         <p id="results-count" class="results-count"></p>

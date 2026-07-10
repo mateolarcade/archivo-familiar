@@ -17,7 +17,10 @@
   const movieGrid = document.getElementById("movie-grid");
   const emptyState = document.getElementById("empty-state");
   const resultsCount = document.getElementById("results-count");
-  const sortSelect = document.getElementById("sort-select");
+  const sortMenuButton = document.getElementById("sort-menu-button");
+  const sortMenuLabel = document.getElementById("sort-menu-label");
+  const sortMenuOptions = document.getElementById("sort-menu-options");
+  const sortOptionButtons = Array.from(document.querySelectorAll("[data-sort-value]"));
   const sortDirectionButton = document.getElementById("sort-direction");
   const catalogTitle = document.getElementById("catalog-title");
   const catalogArea = document.querySelector(".catalog-area");
@@ -38,6 +41,7 @@
     documents: { title: "Documentos disponibles", empty: "No se encontraron documentos", items: documents, badge: "Documento", linkLabel: "Abrir documento " }
   };
   const sortState = { key: "year", direction: "asc" };
+  const sortLabels = { year: "Año", category: "Categoría", title: "Título", duration: "Duración" };
   let currentSection = getRequestedSection();
   let remainingPasswordAttempts = MAX_PASSWORD_ATTEMPTS;
   let introHasStarted = false;
@@ -282,14 +286,34 @@
     sortDirectionButton.setAttribute("aria-label", isDescending ? "Orden decreciente" : "Orden creciente");
     sortDirectionButton.setAttribute("aria-pressed", String(isDescending));
   }
+  function closeSortMenu() {
+    if (sortMenuOptions) sortMenuOptions.classList.add("is-hidden");
+    if (sortMenuButton) sortMenuButton.setAttribute("aria-expanded", "false");
+  }
+  function updateSortMenu() {
+    if (sortMenuLabel) sortMenuLabel.textContent = sortLabels[sortState.key] || "Año";
+    sortOptionButtons.forEach((button) => {
+      button.setAttribute("aria-selected", String(button.dataset.sortValue === sortState.key));
+    });
+  }
   function escapeHtml(value) { return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
   function escapeAttribute(value) { return escapeHtml(value).replaceAll("\x60", "&#096;"); }
   if (searchForm) searchForm.addEventListener("submit", handleSearch);
   if (searchInput) searchInput.addEventListener("input", handleSearch);
-  if (sortSelect) sortSelect.addEventListener("change", () => {
-    sortState.key = sortSelect.value;
+  if (sortMenuButton && sortMenuOptions) sortMenuButton.addEventListener("click", () => {
+    const isOpen = sortMenuOptions.classList.toggle("is-hidden") === false;
+    sortMenuButton.setAttribute("aria-expanded", String(isOpen));
+  });
+  sortOptionButtons.forEach((button) => button.addEventListener("click", () => {
+    sortState.key = button.dataset.sortValue || "year";
+    updateSortMenu();
+    closeSortMenu();
     const section = sections[currentSection] || sections.videos;
     renderItems(getVisibleItems(section), section);
+  }));
+  document.addEventListener("click", (event) => {
+    if (!sortMenuOptions || !sortMenuButton) return;
+    if (!sortMenuOptions.contains(event.target) && !sortMenuButton.contains(event.target)) closeSortMenu();
   });
   if (sortDirectionButton) sortDirectionButton.addEventListener("click", () => {
     sortState.direction = sortState.direction === "asc" ? "desc" : "asc";

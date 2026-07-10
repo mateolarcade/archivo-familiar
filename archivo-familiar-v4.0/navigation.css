@@ -143,23 +143,67 @@
   text-transform: uppercase;
 }
 
-.sort-control select {
-  min-height: 34px;
+.sort-menu-wrap {
+  position: relative;
+}
+
+.sort-menu-button {
+  min-height: 32px;
+  gap: 8px;
   border: 0;
-  border-radius: 0;
-  padding: 0 2px;
+  border-radius: 999px;
+  padding: 0 8px;
   color: #fff;
-  font: inherit;
   font-size: .94rem;
   font-weight: 800;
   background: transparent;
-  outline: none;
-  cursor: pointer;
 }
 
-.sort-control select option {
-  color: #050609;
-  background: #fff;
+.sort-menu-button:hover,
+.sort-menu-button:focus-visible {
+  background: rgba(255, 255, 255, .08);
+  transform: none;
+}
+
+.sort-menu-caret {
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.sort-menu-options {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 20;
+  min-width: 148px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(12, 14, 19, .98);
+  box-shadow: var(--shadow);
+}
+
+.sort-menu-options button {
+  width: 100%;
+  min-height: 34px;
+  justify-content: flex-start;
+  border-radius: 6px;
+  padding: 0 10px;
+  color: #dfe3ec;
+  font-size: .92rem;
+  font-weight: 800;
+  background: transparent;
+}
+
+.sort-menu-options button:hover,
+.sort-menu-options button[aria-selected="true"] {
+  color: #fff;
+  background: rgba(255, 255, 255, .08);
+  transform: none;
+}
+
+.sort-menu-options button[aria-selected="true"] {
+  box-shadow: inset 3px 0 0 var(--red);
 }
 
 .sort-direction {
