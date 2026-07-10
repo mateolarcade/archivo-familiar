@@ -180,13 +180,13 @@
 
 .intro-words {
   display: grid;
-  gap: 8px;
-  margin-top: 24px;
+  gap: 6px;
+  margin-top: 18px;
   color: #fff;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size: clamp(1rem, 2.4vw, 1.55rem);
+  font-size: clamp(.58rem, 1.15vw, .86rem);
   font-weight: 800;
-  letter-spacing: .08em;
+  letter-spacing: .12em;
   line-height: 1.15;
   text-align: center;
   text-transform: uppercase;
@@ -199,15 +199,15 @@
 }
 
 .intro-screen.is-running .intro-words span:nth-child(1) {
-  animation: introWordReveal 6s linear forwards;
+  animation: introWordReveal 6s ease-out .8s forwards;
 }
 
 .intro-screen.is-running .intro-words span:nth-child(2) {
-  animation: introWordReveal 6s linear .95s forwards;
+  animation: introWordReveal 6s ease-out 2.05s forwards;
 }
 
 .intro-screen.is-running .intro-words span:nth-child(3) {
-  animation: introWordReveal 6s linear 1.9s forwards;
+  animation: introWordReveal 6s ease-out 3.3s forwards;
 }
 
 .intro-rec-text {
@@ -293,5 +293,5 @@
 
 @keyframes introWordReveal {
   0% { opacity: 0; transform: translateY(8px); }
-  12%, 100% { opacity: 1; transform: translateY(0); }
+  18%, 100% { opacity: .82; transform: translateY(0); }
 }
