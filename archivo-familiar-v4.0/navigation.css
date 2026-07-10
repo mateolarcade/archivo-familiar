@@ -391,6 +391,21 @@
   scrollbar-color: rgba(255, 255, 255, .25) transparent;
 }
 
+.carousel-video-card .play-badge {
+  right: auto;
+  left: 8px;
+  bottom: 8px;
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 4px;
+  padding: 4px 6px;
+  color: #dfe3ec;
+  font-size: .72rem;
+  line-height: 1;
+  background: rgba(9, 11, 17, .94);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .32);
+}
+
 .section-heading,
 .catalog-area {
   overflow: visible;

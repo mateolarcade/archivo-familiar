@@ -285,7 +285,11 @@
       carousel.className = "decade-carousel";
       carousel.innerHTML = "<h3>" + escapeHtml(group.label) + "</h3><div class=\"decade-track\"></div>";
       const track = carousel.querySelector(".decade-track");
-      group.items.forEach((item) => track.appendChild(createVideoCard(item, section, true)));
+      group.items.forEach((item) => {
+        const card = createVideoCard(item, section, true);
+        card.classList.add("carousel-video-card");
+        track.appendChild(card);
+      });
       fragment.appendChild(carousel);
     });
     movieGrid.appendChild(fragment);
