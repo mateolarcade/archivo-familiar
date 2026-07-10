@@ -36,6 +36,7 @@
   const helpScreen = document.getElementById("help-screen");
   const menuButton = document.getElementById("menu-button");
   const helpMenu = document.getElementById("help-menu");
+  const shareRecLink = document.getElementById("share-rec-link");
   const sectionLinks = Array.from(document.querySelectorAll("[data-section-link]"));
   const photoViewer = document.getElementById("photo-viewer");
   const photoViewerFrame = document.getElementById("photo-viewer-frame");
@@ -45,6 +46,7 @@
   const photos = Array.isArray(window.PHOTOS) ? window.PHOTOS : [];
   const audios = Array.isArray(window.AUDIOS) ? window.AUDIOS : [];
   const documents = Array.isArray(window.DOCUMENTS) ? window.DOCUMENTS : [];
+  const shareRecMessage = "\uD83D\uDCCC Cómo acceder a REC\n\n1\uFE0F\u20E3 Solicitá acceso a la carpeta donde están los videos desde el siguiente enlace:\nhttps://drive.google.com/drive/folders/18crzrbzmLgiuMIbfjgDPdXMV6Cr8a4pI?usp=drive_link\n\n2\uFE0F\u20E3 Una vez que aprueben tu solicitud, vas a recibir un correo de Google. *En ese mismo correo estará la contraseña* para ingresar a REC.\n\n3\uFE0F\u20E3 Ingresá a REC desde:\nhttps://rec-larcade.vercel.app/";
   const sections = {
     videos: { title: "Videos disponibles", empty: "No se encontraron videos", items: sortedMovies, badge: "Video", linkLabel: "Ver video de " },
     photos: { title: "Fotos disponibles", empty: "No se encontraron fotos", items: photos, badge: "Foto", linkLabel: "Ver foto " },
@@ -554,6 +556,10 @@
     if (helpMenu.contains(event.target) || menuButton.contains(event.target)) return;
     helpMenu.classList.add("is-hidden");
     menuButton.setAttribute("aria-expanded", "false");
+  });
+  if (shareRecLink) shareRecLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shareRecMessage), "_blank", "noopener");
   });
   sectionLinks.forEach((link) => link.addEventListener("click", (event) => {
     event.preventDefault();
