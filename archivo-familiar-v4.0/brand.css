@@ -223,7 +223,7 @@
 }
 
 .intro-screen.is-running .intro-words span:nth-child(3) {
-  animation: introWordReveal 6s ease-out 3.3s forwards;
+  animation: introWordReveal 1s ease-out 3s forwards;
 }
 
 .intro-rec-text {
