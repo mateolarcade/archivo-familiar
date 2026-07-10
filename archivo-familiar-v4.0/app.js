@@ -28,6 +28,7 @@
   const historyToggle = document.getElementById("history-toggle");
   const historyPanel = document.getElementById("history-panel");
   const historyCurrentYear = document.getElementById("history-current-year");
+  const historyResultsCount = document.getElementById("history-results-count");
   const historyTrack = document.getElementById("history-track");
   const catalogTitle = document.getElementById("catalog-title");
   const catalogArea = document.querySelector(".catalog-area");
@@ -222,6 +223,12 @@
     const title = section === sections.videos && isHistoryMode ? "Tu historia" : section.title;
     document.title = "REC | " + title;
     if (catalogTitle) catalogTitle.textContent = title;
+    if (catalogArea) catalogArea.classList.toggle("is-history-mode", section === sections.videos && isHistoryMode);
+  }
+  function updateResultsCount(total) {
+    const text = total === 1 ? "1 resultado" : total + " resultados";
+    resultsCount.textContent = text;
+    if (historyResultsCount) historyResultsCount.textContent = text;
   }
   function showSection(sectionName) {
     currentSection = sectionName === "help" || sections[sectionName] ? sectionName : "videos";
@@ -259,7 +266,7 @@
       renderDecadeCarousels(list, section);
       emptyState.classList.toggle("is-hidden", list.length > 0);
       emptyState.querySelector("h3").textContent = section.empty;
-      resultsCount.textContent = list.length === 1 ? "1 resultado" : list.length + " resultados";
+      updateResultsCount(list.length);
       return;
     }
     movieGrid.className = getGridClassName(section);
@@ -270,7 +277,7 @@
     movieGrid.appendChild(fragment);
     emptyState.classList.toggle("is-hidden", list.length > 0);
     emptyState.querySelector("h3").textContent = section.empty;
-    resultsCount.textContent = list.length === 1 ? "1 resultado" : list.length + " resultados";
+    updateResultsCount(list.length);
   }
   function getItemHref(item, section) {
     if (section === sections.videos) return "player.html?id=" + encodeURIComponent(item.id);
