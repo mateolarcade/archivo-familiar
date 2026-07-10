@@ -111,6 +111,45 @@
   box-shadow: inset 0 -2px 0 var(--red);
 }
 
+.search-form {
+  position: relative;
+  width: min(100%, 560px);
+  display: block;
+}
+
+.search-form::after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, .5);
+  border-radius: 50%;
+  opacity: .72;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.search-form::before {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: calc(50% + 9px);
+  width: 8px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .5);
+  opacity: .72;
+  transform: rotate(45deg);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.search-form input {
+  padding-right: 48px;
+}
+
 .poster-placeholder {
   width: 100%;
   height: 100%;
