@@ -181,7 +181,7 @@
 .intro-words {
   display: grid;
   gap: 4px;
-  margin-top: 16px;
+  margin-top: -44px;
   color: #fff;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: clamp(1rem, 2.15vw, 2rem);
