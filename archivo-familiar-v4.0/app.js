@@ -227,15 +227,10 @@
   }
   function renderItems(list, section) {
     movieGrid.innerHTML = "";
+    movieGrid.className = getGridClassName(section);
     const fragment = document.createDocumentFragment();
     list.forEach((item) => {
-      const category = item.category || item.type || section.badge + " REC";
-      const href = getItemHref(item, section);
-      const imageMarkup = item.poster || item.thumbnail ? "<img src=\"" + escapeAttribute(item.poster || item.thumbnail) + "\" alt=\"Portada de " + escapeAttribute(item.title) + "\" loading=\"lazy\">" : "<span class=\"poster-placeholder\">" + escapeHtml(section.badge) + "</span>";
-      const card = document.createElement("article");
-      card.className = "movie-card";
-      card.innerHTML = "<a class=\"poster-link\" href=\"" + escapeAttribute(href) + "\" aria-label=\"" + escapeAttribute(section.linkLabel + item.title) + "\">" + imageMarkup + "<span class=\"poster-play-icon\" aria-hidden=\"true\">&#9658;</span><span class=\"play-badge\">" + escapeHtml(section.badge) + "</span></a><div class=\"movie-info\"><div class=\"movie-title-row\"><h3>" + escapeHtml(item.title) + "</h3><span>" + escapeHtml(item.rating || "ATP") + "</span></div><p>" + escapeHtml(item.description) + "</p><div class=\"meta-row\"><span>" + escapeHtml(category) + "</span><span>" + escapeHtml(item.duration || item.format || "") + "</span><span>" + escapeHtml(item.year || "") + "</span></div></div>";
-      fragment.appendChild(card);
+      fragment.appendChild(createItemCard(item, section));
     });
     movieGrid.appendChild(fragment);
     emptyState.classList.toggle("is-hidden", list.length > 0);
@@ -245,6 +240,45 @@
   function getItemHref(item, section) {
     if (section === sections.videos) return "player.html?id=" + encodeURIComponent(item.id);
     return item.url || item.src || "#";
+  }
+  function getGridClassName(section) {
+    if (section === sections.audios) return "media-list audio-list";
+    if (section === sections.documents) return "media-list document-list";
+    if (section === sections.photos) return "photo-grid";
+    return "movie-grid";
+  }
+  function createItemCard(item, section) {
+    if (section === sections.photos) return createPhotoCard(item);
+    if (section === sections.audios) return createAudioRow(item);
+    if (section === sections.documents) return createDocumentRow(item);
+    return createVideoCard(item, section);
+  }
+  function createVideoCard(item, section) {
+    const category = item.category || item.type || section.badge + " REC";
+    const href = getItemHref(item, section);
+    const imageMarkup = item.poster || item.thumbnail ? "<img src=\"" + escapeAttribute(item.poster || item.thumbnail) + "\" alt=\"Portada de " + escapeAttribute(item.title) + "\" loading=\"lazy\">" : "<span class=\"poster-placeholder\">" + escapeHtml(section.badge) + "</span>";
+    const card = document.createElement("article");
+    card.className = "movie-card";
+    card.innerHTML = "<a class=\"poster-link\" href=\"" + escapeAttribute(href) + "\" aria-label=\"" + escapeAttribute(section.linkLabel + item.title) + "\">" + imageMarkup + "<span class=\"poster-play-icon\" aria-hidden=\"true\">&#9658;</span><span class=\"play-badge\">" + escapeHtml(section.badge) + "</span></a><div class=\"movie-info\"><div class=\"movie-title-row\"><h3>" + escapeHtml(item.title) + "</h3><span>" + escapeHtml(item.rating || "ATP") + "</span></div><p>" + escapeHtml(item.description) + "</p><div class=\"meta-row\"><span>" + escapeHtml(category) + "</span><span>" + escapeHtml(item.duration || item.format || "") + "</span><span>" + escapeHtml(item.year || "") + "</span></div></div>";
+    return card;
+  }
+  function createPhotoCard(item) {
+    const card = document.createElement("article");
+    card.className = "media-card photo-card";
+    card.innerHTML = "<div class=\"embedded-preview photo-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></div><div class=\"media-row-info\"><h3>" + escapeHtml(item.title) + "</h3><a class=\"media-open-link\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Abrir foto</a></div>";
+    return card;
+  }
+  function createAudioRow(item) {
+    const row = document.createElement("article");
+    row.className = "media-row audio-row";
+    row.innerHTML = "<div class=\"media-row-copy\"><h3>" + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.description) + "</p></div><div class=\"embedded-preview audio-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay\"></iframe></div>";
+    return row;
+  }
+  function createDocumentRow(item) {
+    const row = document.createElement("article");
+    row.className = "media-row document-row";
+    row.innerHTML = "<div class=\"embedded-preview document-preview\"><iframe src=\"" + escapeAttribute(item.url) + "\" title=\"" + escapeAttribute(item.title) + "\" loading=\"lazy\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe></div><div class=\"media-row-copy\"><h3>" + escapeHtml(item.title) + "</h3><p>" + escapeHtml(item.description) + "</p><a class=\"media-open-link\" href=\"" + escapeAttribute(item.url) + "\" target=\"_blank\" rel=\"noopener\">Abrir documento</a></div>";
+    return row;
   }
   function handleSearch(event) {
     event.preventDefault();

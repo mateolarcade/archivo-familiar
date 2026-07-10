@@ -123,6 +123,116 @@
   background: linear-gradient(135deg, #252936, #090a0f);
 }
 
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.media-card,
+.media-row {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(20, 22, 29, .58);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .22);
+}
+
+.media-card {
+  overflow: hidden;
+}
+
+.embedded-preview {
+  overflow: hidden;
+  background: #050609;
+}
+
+.embedded-preview iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.photo-preview {
+  aspect-ratio: 4 / 3;
+}
+
+.media-row-info,
+.media-row-copy {
+  padding: 14px;
+}
+
+.media-row-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.media-row-info h3,
+.media-row-copy h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.media-row-copy p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.4;
+}
+
+.media-open-link {
+  flex: none;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 12px;
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 800;
+  background: var(--red);
+}
+
+.media-open-link:hover {
+  background: #f31b25;
+}
+
+.media-list {
+  display: grid;
+  gap: 16px;
+}
+
+.media-row {
+  display: grid;
+  align-items: center;
+  gap: 18px;
+  padding: 14px;
+}
+
+.audio-row {
+  grid-template-columns: minmax(180px, 1fr) minmax(300px, 520px);
+}
+
+.audio-preview {
+  height: 86px;
+  border-radius: 6px;
+}
+
+.document-row {
+  grid-template-columns: minmax(260px, 420px) minmax(180px, 1fr);
+}
+
+.document-preview {
+  height: 260px;
+  border-radius: 6px;
+}
+
 .sort-control {
   position: relative;
   display: flex;
@@ -321,5 +431,22 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .audio-row,
+  .document-row {
+    grid-template-columns: 1fr;
+  }
+
+  .audio-preview {
+    height: 110px;
+  }
+
+  .document-preview {
+    height: 300px;
   }
 }
