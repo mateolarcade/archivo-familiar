@@ -21,7 +21,7 @@ window.DOCUMENTS = [
   },
   {
     id: "doc3",
-    title: "10- Acta de matrimonio Hipólito y Rosine Marie - Traducción oficial al español",
+    title: "10. Acta de matrimonio Hipólito y Rosine Marie - Traducción oficial al español",
     description: "Documento familiar disponible en REC.",
     category: "Documento",
     type: "Documento",
@@ -31,7 +31,7 @@ window.DOCUMENTS = [
   },
   {
     id: "doc4",
-    title: "15- Partida de Nacimiento de Roman Ernesto Larcade",
+    title: "15. Partida de Nacimiento de Roman Ernesto Larcade",
     description: "Documento familiar disponible en REC.",
     category: "Documento",
     type: "Documento",
@@ -41,7 +41,7 @@ window.DOCUMENTS = [
   },
   {
     id: "doc5",
-    title: "15- Partida de Nacimiento de Roman Ernesto Larcade - Traductor público",
+    title: "15. Partida de Nacimiento de Roman Ernesto Larcade - Traductor público",
     description: "Documento familiar disponible en REC.",
     category: "Documento",
     type: "Documento",
