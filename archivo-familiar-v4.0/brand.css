@@ -184,13 +184,19 @@
   margin-top: 16px;
   color: #fff;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  font-size: clamp(.42rem, .72vw, .6rem);
+  font-size: clamp(.042rem, .072vw, .06rem);
   font-weight: 700;
   letter-spacing: .08em;
   line-height: 1.15;
   text-align: center;
   text-transform: none;
   transform: none;
+}
+
+@media (max-width: 760px) {
+  .intro-words {
+    font-size: clamp(.21rem, .36vw, .3rem);
+  }
 }
 
 .intro-words span {
