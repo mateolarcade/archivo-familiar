@@ -339,7 +339,7 @@
   border: 0;
   border-radius: 999px;
   padding: 0;
-  background: rgba(255, 255, 255, .16);
+  background: #050609;
 }
 
 .carousel-toggle span {
@@ -356,6 +356,10 @@
 .carousel-toggle[aria-pressed="true"] {
   background: rgba(229, 9, 20, .9);
   transform: none;
+}
+
+.carousel-toggle[aria-pressed="false"] {
+  background: #050609;
 }
 
 @media (hover: hover) {
