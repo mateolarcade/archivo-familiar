@@ -765,6 +765,17 @@
     padding-top: 4px;
   }
 
+  .search-form input {
+    font-size: 16px;
+    transform: none;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .search-form input:focus {
+    transform: none;
+  }
+
   .sort-control {
     width: max-content;
     gap: 10px;
