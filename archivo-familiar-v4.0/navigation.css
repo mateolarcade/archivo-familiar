@@ -421,6 +421,10 @@
   padding: 26px 12px 10px;
 }
 
+.history-current-year {
+  display: none;
+}
+
 .history-track {
   position: relative;
   height: 52px;
@@ -696,14 +700,34 @@
 
   .history-panel {
     margin: -2px 0 20px;
-    padding: 22px 10px 12px;
+    padding: 8px 10px 12px;
+  }
+
+  .history-current-year {
+    width: max-content;
+    display: block;
+    margin: 0 auto 8px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 4px;
+    padding: 5px 8px;
+    color: #dfe3ec;
+    font-size: .9rem;
+    line-height: 1;
+    font-weight: 800;
+    background: rgba(9, 11, 17, .94);
   }
 
   .history-track {
-    height: 58px;
+    height: 32px;
   }
 
   .history-point strong {
+    display: none;
+  }
+
+  .history-point.is-reference-year strong {
+    display: block;
+    color: #aeb4c2;
     font-size: .62rem;
   }
 

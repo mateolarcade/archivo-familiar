@@ -27,6 +27,7 @@
   const historySwitch = document.getElementById("history-switch");
   const historyToggle = document.getElementById("history-toggle");
   const historyPanel = document.getElementById("history-panel");
+  const historyCurrentYear = document.getElementById("history-current-year");
   const historyTrack = document.getElementById("history-track");
   const catalogTitle = document.getElementById("catalog-title");
   const catalogArea = document.querySelector(".catalog-area");
@@ -447,6 +448,7 @@
     const shouldShow = currentSection === "videos" && isHistoryMode && historyYears.length > 0;
     if (historyPanel) historyPanel.classList.toggle("is-hidden", !shouldShow);
     if (!shouldShow || !historyTrack) return;
+    if (historyCurrentYear) historyCurrentYear.textContent = selectedHistoryYear;
     historyTrack.innerHTML = "";
     const ball = document.createElement("span");
     ball.className = "history-ball";
@@ -455,6 +457,7 @@
     historyYears.forEach((year) => {
       const point = document.createElement("button");
       point.className = "history-point";
+      if (year === 2000) point.classList.add("is-reference-year");
       point.type = "button";
       point.style.left = getYearPosition(year) + "%";
       point.setAttribute("aria-label", "Ver videos de " + year);
