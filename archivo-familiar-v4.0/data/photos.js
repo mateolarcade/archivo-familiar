@@ -1,32 +1,38 @@
 window.PHOTOS = [
   {
-    id: "foto1",
-    title: "foto1",
-    description: "Foto familiar disponible en REC.",
-    category: "Foto",
-    type: "Imagen",
+    id: "cumple-papa-2008",
+    title: "Cumple papa 2008",
+    description: "Album de fotos familiares disponible en Google Drive.",
+    category: "Album",
+    type: "Carpeta de fotos",
     format: "Google Drive",
     rating: "ATP",
-    url: "https://drive.google.com/file/d/1EbXE7h63H8IV0amu-bhaxCsI7tyLYKYi/preview"
+    year: "2008",
+    poster: "",
+    url: "https://drive.google.com/drive/folders/14DAsAoyQ-qsezNsdvsIa6R3P7MnHS-gK?usp=drive_link"
   },
   {
-    id: "foto2",
-    title: "foto2",
-    description: "Foto familiar disponible en REC.",
-    category: "Foto",
-    type: "Imagen",
+    id: "cumple-papino-2008",
+    title: "Cumple papino 2008",
+    description: "Album de fotos familiares disponible en Google Drive.",
+    category: "Album",
+    type: "Carpeta de fotos",
     format: "Google Drive",
     rating: "ATP",
-    url: "https://drive.google.com/file/d/1tfRuy_Z8AOi17wwfG4NDMa0VYDMymKHk/preview"
+    year: "2008",
+    poster: "",
+    url: "https://drive.google.com/drive/folders/1NgK5wwIZd6F8w0xffUZxK06tV3VmDZCb?usp=drive_link"
   },
   {
-    id: "foto3",
-    title: "foto3",
-    description: "Foto familiar disponible en REC.",
-    category: "Foto",
-    type: "Imagen",
+    id: "egresados-las-marias-2013",
+    title: "Egresados Las Marias 2013",
+    description: "Album de fotos familiares disponible en Google Drive.",
+    category: "Album",
+    type: "Carpeta de fotos",
     format: "Google Drive",
     rating: "ATP",
-    url: "https://drive.google.com/file/d/1toFE2S9e11aPFb467q92Yp2o4mT45KDW/preview"
+    year: "2013",
+    poster: "",
+    url: "https://drive.google.com/drive/folders/1ZvIxUJxT1eebUJeAhNDe_9HUJwgjhmHS?usp=drive_link"
   }
 ];
