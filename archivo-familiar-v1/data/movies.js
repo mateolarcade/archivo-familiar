@@ -154,5 +154,18 @@ window.MOVIES = [
     people: ["Fátima", "Mateo"],
     poster: "assets/posters/pecas-flequillos.png",
     drivePreviewUrl: "https://drive.google.com/file/d/1oYHQCOkMdUHuEZlipcs0R5ZSodIgvswj/preview"
+  },
+  {
+    id: "cumple-papino-1999",
+    title: "Cumple de Papino 1999",
+    description: "Año 1999. Festejo de cumpleaños de Papino en un salón en Palermo, Buenos Aires.",
+    category: "Cumpleañoso",
+    duration: "62 min",
+    year: "1999",
+    rating: "ATP",
+    location: "Palermo, CABA",
+    people: ["Rafael", "Isabel", "Fátima", "Mateo"],
+    poster: "assets/posters/cumple-papino-1999.png",
+    drivePreviewUrl: ""
   }
 ];
